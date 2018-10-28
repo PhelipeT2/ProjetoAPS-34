@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class cadastro implements Initializable{
+public class Cadastro implements Initializable{
     Stage stage = null;
 
     @FXML
@@ -21,5 +21,5 @@ public class cadastro implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
+//
 }
