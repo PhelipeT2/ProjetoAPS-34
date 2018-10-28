@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="APS Indians Airlines">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/sqlite-jdbc-3.23.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jfoenix-8.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fontawesomefx-8.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/fontawesomefx-8.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
