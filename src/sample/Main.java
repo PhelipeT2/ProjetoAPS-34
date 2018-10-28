@@ -15,12 +15,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Conexao conexao = new Conexao();
-        ResultSet rs;
+        conexao.connect();
+        conexao.disconnect();
 
-        rs = conexao.displayUsers();
 
-        Parent root = FXMLLoader.load(getClass().getResource("Ordenar.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Indians Airlines");
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
