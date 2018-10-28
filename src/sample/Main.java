@@ -21,7 +21,7 @@ public class Main extends Application {
         rs = conexao.displayUsers();
 
         Parent root = FXMLLoader.load(getClass().getResource("Ordenar.fxml"));
-        primaryStage.setTitle("Indias Airlines");
+        primaryStage.setTitle("Indians Airlines");
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         //primaryStage.setResizable(false);
