@@ -30,6 +30,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         //primaryStage.setResizable(false);
         primaryStage.show();
+        ///
 
     }
 
