@@ -17,7 +17,7 @@
     <children>
         <Pane layoutX="5.0" layoutY="5.0" prefHeight="57.0" prefWidth="591.0" style="-fx-background-color: #353238;">
             <children>
-                <Label fx:id="lblOrdenandoAguarde1" layoutX="6.0" layoutY="8.0" prefHeight="41.0" prefWidth="186.0" style="-fx-font: #99FFFF;" text="Indians Airlines" textFill="WHITE">
+                <Label fx:id="lblOrdenandoAguarde1" layoutX="6.0" layoutY="8.0" prefHeight="41.0" prefWidth="290.0" style="-fx-font: #99FFFF;" text="Indians Airlines - Admin" textFill="WHITE">
                     <font>
                         <Font name="Calibri" size="30.0" />
                     </font>
@@ -38,7 +38,7 @@
                 </HBox>
             </children>
         </Pane>
-        <Pane fx:id="vbox1" layoutX="26.0" layoutY="219.0" prefHeight="57.0" prefWidth="194.0" style="-fx-background-color: #57606F;">
+        <Pane fx:id="vbox1" layoutX="27.0" layoutY="154.0" prefHeight="57.0" prefWidth="194.0" style="-fx-background-color: #57606F;">
             <children>
                 <JFXProgressBar fx:id="pb1" layoutX="4.0" layoutY="29.0" prefHeight="14.0" prefWidth="186.0" style="-fx-background-color: #18c67f;" />
                 <Label fx:id="lblOrdenandoAguarde" layoutX="44.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Aguardando. . ." textFill="WHITE">
@@ -48,25 +48,24 @@
                 </Label>
             </children>
         </Pane>
-        <JFXButton fx:id="bt1" alignment="CENTER" layoutX="47.0" layoutY="302.0" onAction="#bt1Action" prefHeight="37.0" prefWidth="151.0" style="-fx-background-color: #18c67f;" text="Ordenar" textFill="WHITE">
+        <JFXButton fx:id="bt1" alignment="CENTER" layoutX="48.0" layoutY="270.0" onAction="#bt1Action" prefHeight="37.0" prefWidth="151.0" style="-fx-background-color: #18c67f;" text="Ordenar" textFill="WHITE">
             <font>
                 <Font size="16.0" />
             </font>
         </JFXButton>
-        <FontAwesomeIconView fill="WHITE" glyphName="MAIL_FORWARD" layoutX="163.0" layoutY="330.0" size="24" text="" textAlignment="RIGHT" />
-        <Pane layoutX="219.0" layoutY="166.0" prefHeight="220.0" prefWidth="368.0">
+        <FontAwesomeIconView fill="WHITE" glyphName="MAIL_FORWARD" layoutX="163.0" layoutY="298.0" size="24" text="" textAlignment="RIGHT" />
+        <Pane layoutX="220.0" layoutY="95.0" prefHeight="291.0" prefWidth="368.0">
             <children>
-                <BarChart layoutX="4.0" layoutY="25.0" prefHeight="190.0" prefWidth="359.0">
+                <BarChart fx:id="eficienciaChart" layoutX="-4.0" layoutY="-3.0" prefHeight="291.0" prefWidth="368.0" title="Eficiencia dos Algoritimos">
                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
+                        <CategoryAxis label="Nome" tickLabelFill="RED" fx:id="x" />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis side="LEFT" />
+                        <NumberAxis fx:id="y" label="Grau de Eficiencia" prefHeight="299.0" prefWidth="49.0" side="LEFT" tickLabelFill="#ff4141" />
                     </yAxis>
                 </BarChart>
-                <Label layoutX="117.0" layoutY="6.0" text="Eficiencia dos algoritimos" textFill="WHITE" />
             </children>
         </Pane>
-        <Label layoutX="95.0" layoutY="110.0" text="Aqui o Admin podera ver os indices de eficiencia dos algoritmos de ordenção" textFill="WHITE" />
+        <Label layoutX="15.0" layoutY="62.0" text="Aqui o Admin podera ver os indices de eficiencia dos algoritmos de ordenção" textFill="WHITE" />
     </children>
 </AnchorPane>
