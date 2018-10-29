@@ -40,8 +40,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <JFXComboBox prefHeight="52.0" prefWidth="202.0" promptText="Adultos" style="-jfx-label-float: true; -fx-font-size: 22;" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <JFXComboBox prefHeight="52.0" prefWidth="202.0" promptText="Crianças" style="-jfx-label-float: true; -fx-font-size: 22;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <JFXComboBox fx:id="cbx_Adulto" prefHeight="52.0" prefWidth="202.0" promptText="Adultos" style="-jfx-label-float: true; -fx-font-size: 22;" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <JFXComboBox fx:id="cbx_Crianca" prefHeight="52.0" prefWidth="202.0" promptText="Crianças" style="-jfx-label-float: true; -fx-font-size: 22;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                   <GridPane alignment="CENTER" layoutX="11.0" layoutY="350.0" prefHeight="79.0" prefWidth="739.0">
