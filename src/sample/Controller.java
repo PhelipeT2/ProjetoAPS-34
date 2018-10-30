@@ -1,24 +1,42 @@
 package sample;
 
+import Banco.Conexao;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import javax.swing.*;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 
-public class Controller {
+public class Controller implements Initializable {
+    @FXML
+    private JFXComboBox<String> cbx_Origem;
 
+    @FXML
+    private JFXComboBox<String> cbx_Destino;
+
+    @FXML
+    private JFXComboBox<Integer> cbx_Adulto;
+
+    @FXML
+    private JFXComboBox<Integer> cbx_Crianca;
     double x,y;
     Stage stage = null;
+
+    Conexao conexao = new Conexao();
+
     @FXML
     void dragedMenu(MouseEvent event) {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -53,5 +71,30 @@ public class Controller {
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.setScene(home_scene);
         app_stage.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            ResultSet rs = null;
+            Statement statement = null;
+            conexao.connect();
+
+            for (int i = 1; i < 10; i++) {
+                cbx_Adulto.getItems().add(i);
+                cbx_Crianca.getItems().add(i);
+            }
+
+            statement = conexao.createStatement();
+            rs = statement.executeQuery("Select Nome from Paises");
+
+            while(rs.next()){
+            cbx_Origem.getItems().add(rs.getString("Nome"));
+            cbx_Destino.getItems().add(rs.getString("Nome"));
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
     }
 }

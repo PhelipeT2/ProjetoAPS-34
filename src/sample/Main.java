@@ -1,6 +1,5 @@
 package sample;
 
-import Banco.Conexao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,15 +13,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Conexao conexao = new Conexao();
-        conexao.connect();
-        conexao.disconnect();
-
-
-
-        Parent root = FXMLLoader.load(getClass().getResource("Ordenar.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Indians Airlines");
-
         Parent root2 = FXMLLoader.load(getClass().getResource("Lugares.fxml"));
         primaryStage.setTitle("Indias Airlines");
 

@@ -1,7 +1,10 @@
 package Banco;
 
 import javax.swing.*;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Conexao {
     Connection conexao = null;
@@ -13,14 +16,6 @@ public class Conexao {
             System.out.println("Connection to SQLite has been established.");
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
-        }finally {
-            try {
-                if (conexao != null) {
-                    conexao.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
     }
     public void disconnect(){
