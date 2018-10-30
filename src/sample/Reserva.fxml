@@ -3,17 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Reserva">
    <children>
       <AnchorPane prefHeight="50.0" prefWidth="801.0">
@@ -118,7 +111,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fill="#c9c7c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" textAlignment="JUSTIFY" wrappingWidth="197.99609375">
+                  <Text fx:id="Ttotal" fill="#c9c7c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" textAlignment="JUSTIFY" wrappingWidth="197.99609375">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -128,7 +121,7 @@
                   </Text>
                </children>
             </VBox>
-            <JFXButton accessibleText="Volta" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="38.0" prefWidth="50.0" style="-fx-background-color: #18c67f;" text=" ">
+            <JFXButton accessibleText="Volta" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" onAction="#handleButtonAction" prefHeight="38.0" prefWidth="50.0" style="-fx-background-color: #18c67f;" text=" ">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" rotate="40.6" size="24" />
                </graphic>

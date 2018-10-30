@@ -15,8 +15,8 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Indians Airlines");
-        Parent root2 = FXMLLoader.load(getClass().getResource("Lugares.fxml"));
-        primaryStage.setTitle("Indias Airlines");
+//        Parent root2 = FXMLLoader.load(getClass().getResource("Lugares.fxml"));
+//        primaryStage.setTitle("Indias Airlines");
 
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);

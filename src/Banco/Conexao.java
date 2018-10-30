@@ -3,7 +3,6 @@ package Banco;
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Conexao {
@@ -26,12 +25,6 @@ public class Conexao {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
-    }
-    private void getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("org.sqlite.JDBC");
-        conexao = DriverManager.getConnection("jdbc:sqlite:banco.db");
-        //initialise();
-        System.out.println("Conexao Configurada!");
     }
     public Statement createStatement(){
         try{

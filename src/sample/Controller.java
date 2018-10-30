@@ -65,12 +65,21 @@ public class Controller implements Initializable {
         System.exit(0);
     }
     public void handleButtonAction(ActionEvent event) throws Exception {
-        System.out.println("Proxima cena");
-        Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene home_scene = new Scene(parent);
-        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_stage.setScene(home_scene);
-        app_stage.show();
+
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Reserva.fxml"));
+         Parent root = loader.load();
+         Reserva secondController = loader.getController();
+         secondController.setTtotal("Teste"); // metodo para passar valor.
+         Scene home_scene = new Scene(root);
+         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+         app_stage.setScene(home_scene);
+         app_stage.show();
+//        System.out.println("Proxima cena");
+//        Parent parent = FXMLLoader.load(getClass().getResource("Reserva.fxml"));
+//        Scene home_scene = new Scene(parent);
+//        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        app_stage.setScene(home_scene);
+//        app_stage.show();
     }
 
     @Override

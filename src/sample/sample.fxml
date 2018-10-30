@@ -9,7 +9,7 @@
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.Controller">
    <children>
       <AnchorPane layoutY="50.0" prefHeight="552.0" prefWidth="801.0" style="-fx-background-color: #57606F;">
          <children>
@@ -56,7 +56,7 @@
                               <FontAwesomeIconView fill="WHITE" glyphName="USER_PLUS" size="20" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton contentDisplay="RIGHT" prefHeight="52.0" prefWidth="165.0" style="-fx-background-color: #008D87; -fx-background-radius: 20;" text="Reservar " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <JFXButton contentDisplay="RIGHT" onAction="#handleButtonAction" prefHeight="52.0" prefWidth="165.0" style="-fx-background-color: #008D87; -fx-background-radius: 20;" text="Reservar " textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="21.0" />
                            </font>
