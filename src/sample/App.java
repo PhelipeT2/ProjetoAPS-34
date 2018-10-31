@@ -13,14 +13,22 @@ public class App {
         //t2.start();
 
         int vetor[] = gerarVetor(100000);
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.BubbleSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.SelectionSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.MergeSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.QuickSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.HeapSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.InsertionSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.bogoSort)).start();
-        new Thread(new Sort(vetor.clone(), sortingAlgorithm.shellSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.BubbleSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.SelectionSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.MergeSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.QuickSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.HeapSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.InsertionSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.bogoSort)).start();
+//        new Thread(new Sort(vetor.clone(), sortingAlgorithm.shellSort)).start();
+
+        Sort sort = new Sort(vetor.clone(),sortingAlgorithm.bogoSort);
+        new Thread(sort).start();
+        long value = sort.getTempo();
+        /// Exemplo implementado aqui
+
+
+
     }
 
     public static int[] gerarVetor(int n) {
@@ -38,10 +46,14 @@ class Sort implements Runnable {
 
     int[] vetor;
     sortingAlgorithm sortingAlgorithm;
+    long tempo;
 
     public Sort(int[] vetor, sortingAlgorithm ag) {
         this.vetor = vetor;
         this.sortingAlgorithm = ag;
+    }
+    public long getTempo(){
+        return this.tempo;
     }
 
     @Override
@@ -55,6 +67,7 @@ class Sort implements Runnable {
                     Exibe(sort.BubbleSort(this.vetor.clone()));
                     startTime = (System.nanoTime() - startTime);
                     System.out.println("\nTempo percorrido: " + (startTime / 1000000) + "ms" + " BubbleSort");
+                    tempo = (startTime / 1000000);
                     break;
                 case QuickSort:
                     System.out.println("\nExecutando QuickSort...");
