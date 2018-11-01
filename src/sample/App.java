@@ -157,23 +157,3 @@ class Sort implements Runnable {
     }
 }
 
-class Task implements Runnable {
-
-    String name;
-
-    public Task(String name) {
-        this.name = name;
-    }
-
-    public void run() {
-        Thread.currentThread().setName(this.name);
-        for (int i = 0; i < 200; i++) {
-            System.out.println("number: " + i + " - " + Thread.currentThread().getName());
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-}
