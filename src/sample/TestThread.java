@@ -226,6 +226,8 @@ public class TestThread implements Initializable {
         Thread th = new Thread(task);
         th.setDaemon(true);
         th.start();
+        //Não é necessário criar uma task nova para realizar essa tarefa, só fazer um esquema de implementar o Platform.runLater nos lugares que vão informar a tela.
+
         //TestandoSort ts = new TestandoSort(vetor,listThread,listSort,pi1,pi6,pi7,pi5,pi4,pi3,pi2,pi8,l1,l2,l3,l4,l5,l6,l7,l8);
         //Platform.runLater(ts);
 //
