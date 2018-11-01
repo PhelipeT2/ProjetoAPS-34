@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #353238;">
+      <Label layoutX="22.0" layoutY="5.0" text="Indians Airlines" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="28.0"/>
+         </font>
+      </Label>
+      <HBox layoutX="748.0" layoutY="13.0" prefHeight="40.0" prefWidth="47.0">
+         <FontAwesomeIconView fill="#f51919" glyphName="CLOSE" size="24" style="-fx-cursor: hand;">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+            </HBox.margin>
+         </FontAwesomeIconView>
+      </HBox>
+   </AnchorPane>
+   <Label layoutX="255.0" layoutY="64.0" text="Reserva realizada com sucesso !" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="20.0"/>
+      </font>
+   </Label>
+   <Label layoutX="127.0" layoutY="215.0"/>
+   <Pane layoutX="33.0" layoutY="100.0" prefHeight="465.0" prefWidth="735.0" style="-fx-background-color: #dddfe2;">
+      <effect>
+         <InnerShadow blurType="ONE_PASS_BOX" color="#5148a3"/>
+      </effect>
+      <Label layoutX="45.0" layoutY="43.0" text="Nome:">
+         <font>
+            <Font size="13.0"/>
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="14.0" text="Informações do cliente">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="72.0" text="Email:">
+         <font>
+            <Font size="13.0"/>
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="107.0" text="Passageiros">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="135.0" text="Adulto:">
+         <font>
+            <Font size="13.0"/>
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="162.0" text="Criança: ">
+         <font>
+            <Font size="13.0"/>
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="203.0" text="Bilhete Eletrônico">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="239.0" text="Ida:">
+         <font>
+            <Font size="13.0"/>
+         </font>
+      </Label>
+      <Label layoutX="368.0" layoutY="44.0" text="Endereço:"/>
+      <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="166.0" layoutY="253.0" size="14"/>
+      <Label layoutX="368.0" layoutY="73.0" text="Telefone:"/>
+      <Label layoutX="37.0" layoutY="264.0" text="Horário:">
+         <font>
+            <Font size="13.0"/>
+         </font>
+      </Label>
+      <Label layoutX="526.0" layoutY="73.0" text="CPF/Passaporte:"/>
+      <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="166.0" layoutY="278.0" size="14"/>
+      <Label layoutX="39.0" layoutY="290.0" text="Data:"/>
+      <Label layoutX="44.0" layoutY="362.0" text="Volta: "/>
+      <Label layoutX="42.0" layoutY="328.0" text="Assento:"/>
+      <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="166.0" layoutY="375.0" size="14"/>
+      <Label layoutX="43.0" layoutY="386.0" text="Horário:"/>
+      <Label layoutX="47.0" layoutY="410.0" text="Data:"/>
+      <FontAwesomeIconView glyphName="ARROW_RIGHT" layoutX="166.0" layoutY="401.0" size="14"/>
+      <Label layoutX="368.0" layoutY="107.0" text="Pagamento">
+         <font>
+            <Font name="System Bold" size="15.0"/>
+         </font>
+      </Label>
+      <Label layoutX="368.0" layoutY="136.0" text="Quantidade de passageiros:"/>
+      <Label layoutX="368.0" layoutY="163.0" text="Valor Total:"/>
+      <Label layoutX="369.0" layoutY="186.0" text="Forma de Pagamento:"/>
+      <Label layoutX="371.0" layoutY="216.0" text="Parcelamento:"/>
+      <Pane layoutX="368.0" layoutY="251.0" prefHeight="189.0" prefWidth="341.0" style="-fx-background-color: grey;">
+         <JFXTextArea focusColor="BLACK" layoutX="-1.0" prefHeight="189.0" prefWidth="341.0"
+                      style="-fx-background-color: grey;"
+                      text="Muito obrigado por contribuir com o meio ambiente!!!">
+            <font>
+               <Font name="System Bold" size="13.0"/>
+            </font>
+         </JFXTextArea>
+      </Pane>
+   </Pane>
+   <Label text="Label"/>
+</AnchorPane>
