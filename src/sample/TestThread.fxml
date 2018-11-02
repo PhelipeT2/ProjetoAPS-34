@@ -114,6 +114,6 @@
          </children>
       </GridPane>
       <JFXButton layoutX="163.0" layoutY="528.0" onAction="#ButtonStart" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Iniciar" textFill="WHITE" />
-      <JFXButton layoutX="476.0" layoutY="528.0" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Cancelar" textFill="WHITE" />
+      <JFXButton layoutX="476.0" layoutY="528.0" onAction="#ButtonCancel" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Cancelar" textFill="WHITE" />
    </children>
 </AnchorPane>
