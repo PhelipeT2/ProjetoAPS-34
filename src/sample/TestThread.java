@@ -86,7 +86,7 @@ public class TestThread implements Initializable {
     @FXML
     void ButtonStart(ActionEvent event) {
 
-        int vetor[] = gerarVetor(1000);
+        int vetor[] = gerarVetor(15000);
 
         Thread shellSortT, bogoSortT, insertionSortT, heapSortT, bubbleSortT, selectionSortT, mergeSortT, quickSortT;
 
@@ -139,7 +139,7 @@ public class TestThread implements Initializable {
         listThread.add(mergeSortT);
         listThread.add(quickSortT);
 
-        ts = new TestandoSort(vetor, listThread, listSort, pi1, pi6, pi7, pi5, pi4, pi3, pi2, pi8, l1, l2, l3, l4, l5, l6, l7, l8,pieChart1);
+        ts = new TestandoSort(vetor, listThread, listSort, pi1, pi6, pi7, pi5, pi4, pi3, pi2, pi8, l1, l2, l3, l4, l5, l6, l7, l8, pieChart1);
         th = new Thread(ts);
         th.setDaemon(true);
         th.start();
@@ -231,8 +231,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l8.setText(Objects.toString(sort.getTempo(), null));
                                         pi8.setVisible(false);
-                                        list.add(new PieChart.Data("shellSort", sort.getTempo()));
-                                        pieChart1.setData(list);
+                                        //list.add(new PieChart.Data("shellSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -240,7 +239,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l7.setText(Objects.toString(sort.getTempo(), null));
                                         pi7.setVisible(false);
-                                        list.add(new PieChart.Data("bogoSort", sort.getTempo()));
+                                        //list.add(new PieChart.Data("bogoSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -248,7 +247,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l6.setText(Objects.toString(sort.getTempo(), null));
                                         pi6.setVisible(false);
-                                        list.add(new PieChart.Data("insertionSort", sort.getTempo()));
+                                        //list.add(new PieChart.Data("insertionSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -256,7 +255,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l5.setText(Objects.toString(sort.getTempo(), null));
                                         pi5.setVisible(false);
-                                        list.add(new PieChart.Data("heapSort", sort.getTempo()));
+                                        //list.add(new PieChart.Data("heapSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -264,7 +263,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l1.setText(Objects.toString(sort.getTempo(), null));
                                         pi1.setVisible(false);
-                                        list.add(new PieChart.Data("bubbleSort", sort.getTempo()));
+                                        //list.add(new PieChart.Data("bubbleSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -272,7 +271,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l2.setText(Objects.toString(sort.getTempo(), null));
                                         pi2.setVisible(false);
-                                        list.add(new PieChart.Data("selectionSort", sort.getTempo()));
+                                        //list.add(new PieChart.Data("selectionSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -280,7 +279,7 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l3.setText(Objects.toString(sort.getTempo(), null));
                                         pi3.setVisible(false);
-                                        list.add(new PieChart.Data("mergeSort", sort.getTempo()));
+                                        //list.add(new PieChart.Data("mergeSort", sort.getTempo()));
 
                                     });
                                     break;
@@ -297,5 +296,12 @@ class TestandoSort implements Runnable {
                 }
             }
         }
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                //ObservableList<PieChart.Data> list2 = FXCollections.observableArrayList();
+                //pieChart1.setData(list2);
+            }
+        });
     }
 }
