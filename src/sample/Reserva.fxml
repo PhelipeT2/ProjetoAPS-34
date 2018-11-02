@@ -93,34 +93,6 @@
                   </Text>
                </children>
             </GridPane>
-            <VBox layoutX="301.0" layoutY="412.0" prefHeight="123.0" prefWidth="200.0">
-               <children>
-                  <Text fill="#c9c7c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Bloqueados:" textAlignment="JUSTIFY" wrappingWidth="197.69140625">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text fill="#c9c7c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponível: " textAlignment="JUSTIFY" wrappingWidth="199.02734375">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Text>
-                  <Text fx:id="Ttotal" fill="#c9c7c7" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" textAlignment="JUSTIFY" wrappingWidth="197.99609375">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-            </VBox>
             <JFXButton accessibleText="Volta" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" onAction="#handleButtonAction" prefHeight="38.0" prefWidth="50.0" style="-fx-background-color: #18c67f;" text=" ">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" rotate="40.6" size="24" />
@@ -134,6 +106,58 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="MAIL_FORWARD" size="24" textAlignment="RIGHT" />
                </graphic>
             </JFXButton>
+            <GridPane layoutX="285.0" layoutY="410.0" prefHeight="121.0" prefWidth="349.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Origem:">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="l_Orig" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fx:id="l_Dest" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Local" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Destino:" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="l_qtdDis" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Qtd. Disponivel:" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
          </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package sample;
 
+import Model.ModelReserva;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Reserva implements Initializable {
+    private ModelReserva mReserva;
+    Integer qtdDisponivel;
     @FXML
-    private Text Ttotal;
+    private Text l_Orig;
+
+    @FXML
+    private Text l_Dest;
+
+    @FXML
+    private Text l_qtdDis;
 
     double x,y;
     Stage stage = null;
@@ -43,8 +52,12 @@ public class Reserva implements Initializable {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
-    public void setTtotal(String value){
-        this.Ttotal.setText(value);
+    public void setmReserva(ModelReserva value){
+        this.mReserva = value;
+        l_Orig.setText(value.getOrigem());
+        l_Dest.setText(value.getDestino());
+        qtdDisponivel = value.getQtdAdulto()+ value.getQtdCrianca();
+        l_qtdDis.setText(Integer.toString(qtdDisponivel));
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
