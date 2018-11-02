@@ -79,7 +79,7 @@ public class TestThread implements Initializable {
 
     @FXML
     void ButtonStart(ActionEvent event) {
-        int vetor[] = gerarVetor(999999);
+        int vetor[] = gerarVetor(1000);
         Thread shellSortT, bogoSortT, insertionSortT, heapSortT, bubbleSortT, selectionSortT, mergeSortT, quickSortT;
         Sort shellSort, bogoSort, insertionSort, heapSort, bubbleSort, selectionSort, mergeSort, quickSort;
         shellSort = new Sort(vetor.clone(), sortingAlgorithm.shellSort);
@@ -196,11 +196,9 @@ class TestandoSort implements Runnable {
             Iterator<Thread> ite = listThread.iterator();
             while (ite.hasNext()) {
                 Thread item = ite.next();
-
                 if (!item.isAlive()) {
                     for (Sort sort : listSort) {
                         if (item.getName().equals(sort.getNameSort())) {
-                            //JOptionPane.showMessageDialog(null, sort.getTempo());
                             System.out.println("|| " + item.getName() + " || seu tempo foi: " + sort.getTempo());
                             ite.remove();
                             switch (item.getName()) {
@@ -256,7 +254,6 @@ class TestandoSort implements Runnable {
                                     Platform.runLater(() -> {
                                         l4.setText(Objects.toString(sort.getTempo(), null));
                                         pi4.setVisible(false);
-
                                     });
                                     break;
                             }
