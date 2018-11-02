@@ -1,119 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #57606F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TestThread">
-   <children>
-      <GridPane alignment="CENTER" layoutX="27.0" layoutY="79.0" prefHeight="424.0" prefWidth="748.0">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="234.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="425.0" minWidth="10.0" prefWidth="288.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="379.0" minWidth="10.0" prefWidth="220.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="BubbleSort" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="SelectionSort" textFill="WHITE" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="MergeSort" textFill="WHITE" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="QuickSort" textFill="WHITE" GridPane.rowIndex="3">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="HeapSort" textFill="WHITE" GridPane.rowIndex="4">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="InsertionSort" textFill="WHITE" GridPane.rowIndex="5">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="BogoSort" textFill="WHITE" GridPane.rowIndex="6">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="ShellSort" textFill="WHITE" GridPane.rowIndex="7">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <ProgressIndicator fx:id="pi1" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" />
-            <ProgressIndicator fx:id="pi6" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <ProgressIndicator fx:id="pi7" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <ProgressIndicator fx:id="pi5" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ProgressIndicator fx:id="pi4" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <ProgressIndicator fx:id="pi3" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ProgressIndicator fx:id="pi2" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ProgressIndicator fx:id="pi8" prefHeight="42.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Label fx:id="l1" text="Resultado" textFill="WHITE" GridPane.columnIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l2" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l3" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l4" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l5" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l6" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l7" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="l8" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
-      <JFXButton layoutX="163.0" layoutY="528.0" onAction="#ButtonStart" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Iniciar" textFill="WHITE" />
-      <JFXButton layoutX="476.0" layoutY="528.0" onAction="#ButtonCancel" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Cancelar" textFill="WHITE" />
-   </children>
+    <children>
+        <GridPane alignment="CENTER" layoutX="27.0" layoutY="101.0" prefHeight="402.0" prefWidth="368.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="660.0" minWidth="10.0" prefWidth="204.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="544.0" minWidth="0.0" prefWidth="88.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="528.0" minWidth="10.0" prefWidth="120.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="BubbleSort" textFill="WHITE" />
+                <Label text="SelectionSort" textFill="WHITE" GridPane.rowIndex="1" />
+                <Label text="MergeSort" textFill="WHITE" GridPane.rowIndex="2" />
+                <Label text="QuickSort" textFill="WHITE" GridPane.rowIndex="3" />
+                <Label text="HeapSort" textFill="WHITE" GridPane.rowIndex="4" />
+                <Label text="InsertionSort" textFill="WHITE" GridPane.rowIndex="5" />
+                <Label text="BogoSort" textFill="WHITE" GridPane.rowIndex="6" />
+                <Label text="ShellSort" textFill="WHITE" GridPane.rowIndex="7" />
+                <ProgressIndicator fx:id="pi1" prefHeight="45.0" prefWidth="286.0" GridPane.columnIndex="2" />
+                <ProgressIndicator fx:id="pi6" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                <ProgressIndicator fx:id="pi7" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                <ProgressIndicator fx:id="pi5" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                <ProgressIndicator fx:id="pi4" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                <ProgressIndicator fx:id="pi3" prefHeight="10.0" prefWidth="466.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <ProgressIndicator fx:id="pi2" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <ProgressIndicator fx:id="pi8" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                <Label fx:id="l1" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" />
+                <Label fx:id="l2" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="l3" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label fx:id="l4" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label fx:id="l5" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label fx:id="l6" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label fx:id="l7" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <Label fx:id="l8" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            </children>
+        </GridPane>
+        <JFXButton layoutX="163.0" layoutY="528.0" onAction="#ButtonStart" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Iniciar" textFill="WHITE" />
+        <JFXButton layoutX="476.0" layoutY="528.0" onAction="#ButtonCancel" prefHeight="44.0" prefWidth="83.0" style="-fx-background-color: #008D87;" text="Cancelar" textFill="WHITE" />
+        <PieChart fx:id="pieChart1" layoutX="430.0" layoutY="147.0" prefHeight="311.0" prefWidth="330.0" />
+    </children>
 </AnchorPane>
