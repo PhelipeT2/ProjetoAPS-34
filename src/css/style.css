@@ -1,3 +1,14 @@
 .jfx-date-picker > .jfx-text-field {
     -jfx-label-float: true;
 }
+.icon-Hover{
+    -fx-background-color:#e00a0a;
+}
+
+.glyph-icon:hover{
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);
+    -fx-background-color:#e00a0a;
+}
+.GridPane:hover .glyph-icon{
+    -fx-background-color:#e00a0a;
+}

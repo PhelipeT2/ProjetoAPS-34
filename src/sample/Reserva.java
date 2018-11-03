@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -52,6 +53,29 @@ public class Reserva implements Initializable {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    void chairClick(MouseEvent event) {
+
+            // lugar já reservado.
+            if (((Node) event.getSource()).getStyle().equals("-fx-fill: #949191;")) {
+                JOptionPane.showMessageDialog(null, "Lugar já Reservado!1");
+            } else {
+                if (((Node) event.getSource()).getStyle().equals("-fx-fill: #a11616; -fx-cursor: Hand;")) {
+                    ((Node) event.getSource()).setStyle("-fx-fill: #1fe05c; -fx-cursor: Hand;");
+                    qtdDisponivel++;
+                } else {
+                    if(qtdDisponivel > 0) {
+                    ((Node) event.getSource()).setStyle("-fx-fill: #a11616; -fx-cursor: Hand;");
+                        qtdDisponivel--;
+                    }else{
+                        JOptionPane.showMessageDialog(null,"A quantidade maxima foi atingida!");
+                    }
+                }
+        }
+        l_qtdDis.setText(Integer.toString(qtdDisponivel));
+    }
+
     public void setmReserva(ModelReserva value){
         this.mReserva = value;
         l_Orig.setText(value.getOrigem());

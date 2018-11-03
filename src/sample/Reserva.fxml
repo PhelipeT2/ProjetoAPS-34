@@ -2,9 +2,9 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import de.jensd.fx.glyphs.materialicons.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Reserva">
@@ -51,7 +51,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" size="50">
+                  <MaterialIconView fill="#1fe05c" glyphName="AIRLINE_SEAT_RECLINE_NORMAL" size="50">
                      <GridPane.margin>
                         <Insets left="25.0" />
                      </GridPane.margin>
@@ -158,6 +158,220 @@
                   </Text>
                </children>
             </GridPane>
+            <GridPane layoutX="57.0" layoutY="85.0" prefHeight="285.0" prefWidth="688.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="20.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="20.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="20.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="20.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="2" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="5" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="12" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="11" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="10" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="10" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="9" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="9" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="13" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="12" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="11" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="9" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="13" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="12" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="11" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="10" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="9" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="13" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="12" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="13" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="12" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="11" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="10" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="9" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="8" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="13" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="13" GridPane.rowIndex="6" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="12" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" GridPane.columnIndex="11" GridPane.rowIndex="7" />
+                  <MaterialIconView glyphName="AIRLINE_SEAT_RECLINE_NORMAL" onMouseClicked="#chairClick" size="35" style="-fx-fill: #1fe05c; -fx-cursor: Hand;" />
+               </children>
+            </GridPane>
+            <Label layoutX="33.0" layoutY="88.0" text="A" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="126.0" text="B" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="197.0" text="C" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="235.0" text="D" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="304.0" text="E" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="33.0" layoutY="340.0" text="F" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="72.0" layoutY="59.0" text="1" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="59.0" text="2" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="172.0" layoutY="59.0" text="3" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="222.0" layoutY="59.0" text="4" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="272.0" layoutY="59.0" text="5" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="322.0" layoutY="59.0" text="6" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="372.0" layoutY="59.0" text="7" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="422.0" layoutY="59.0" text="8" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="472.0" layoutY="59.0" text="9" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="522.0" layoutY="59.0" text="10" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="572.0" layoutY="59.0" text="11" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="622.0" layoutY="59.0" text="12" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="672.0" layoutY="59.0" text="13" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="722.0" layoutY="59.0" text="14" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </children>
 </AnchorPane>
