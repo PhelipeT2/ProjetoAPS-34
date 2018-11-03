@@ -13,12 +13,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("TestThread.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Indians Airlines");
 //        Parent root2 = FXMLLoader.load(getClass().getResource("Lugares.fxml"));
 //        primaryStage.setTitle("Indias Airlines");
 
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().addAll("css/style.css");
+        primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         //primaryStage.setResizable(false);
         primaryStage.show();
