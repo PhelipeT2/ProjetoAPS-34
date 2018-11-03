@@ -3,17 +3,16 @@ package Model;
 import java.time.LocalDate;
 
 public class ModelCadastro {
-    private String Name, SName, Doc, Add, City, Stt, Email, KidName, KidSName, KidDoc;
-    private LocalDate Age, KidAge;
+    private String Name, SName, Doc, Addr, City, Stt, Email, KidName, KidSName, KidDoc, Age, KidAge;
     private int Numb, Zip, Tel;
 
-    public void ModelCadastro(String Name, String SName, String Doc, String Add, String City, String Stt, String Email,
-                              String KidName, String KidSName, String KidDoc, LocalDate Age, LocalDate KidAge, int Numb,
+    public void ModelCadastro(String Name, String SName, String Doc, String Addr, String City, String Stt, String Email,
+                              String KidName, String KidSName, String KidDoc, String Age, String KidAge, int Numb,
                               int Zip, int Tel){
         this.Name = Name;
         this.SName = SName;
         this.Doc = Doc;
-        this.Add = Add;
+        this.Addr = Addr;
         this.City = City;
         this.Stt = Stt;
         this.Email = Email;
@@ -37,7 +36,7 @@ public class ModelCadastro {
         return Doc;
     }
     public String getAdd(){
-        return Add;
+        return Addr;
     }
     public String getCity(){
         return City;
@@ -52,15 +51,13 @@ public class ModelCadastro {
         return KidName;
     }
     public String getKidSName(){
-        return SName;
+        return KidSName;
     }
     public String getKidDoc(){
         return KidDoc;
     }
-    public LocalDate getAge(){
-        return Age;
-    }
-    public LocalDate getKidAge(){
+    public String getAge(){return Age;}
+    public String getKidAge(){
         return KidAge;
     }
     public int getZip(){

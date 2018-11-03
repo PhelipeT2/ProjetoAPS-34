@@ -1,6 +1,8 @@
 package sample;
 
 import Banco.Conexao;
+import Model.ModelCadastro;
+import Model.ModelReserva;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -22,12 +24,30 @@ import java.util.ResourceBundle;
 import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Cadastro implements Initializable{
-    public JFXTextField Name, SName, Doc, Age, Add, Numb, Zip, City, Stt, Email, Tel, KidName, KidSName, KidAge, KidDoc;
+    private ModelCadastro mCadastro;
+    public JFXTextField Name, SName, Doc, Age, Addr, Numb, Zip, City, Stt, Email, Tel, KidName, KidSName, KidAge, KidDoc;
     public JFXButton next;
     public JFXComboBox <String> cbx_Doc, cbx_KidDoc;
 
     private Stage stage = null;
-    private Conexao conexao = new Conexao();
+
+    public void setModelCadastro(ModelCadastro value){
+        this.mCadastro = value;
+        Name.setText(value.getName());
+        SName.setText(value.getSName());
+        Doc.setText(value.getDoc());
+        Addr.setText(value.getAdd());
+        City.setText(value.getCity());
+        Stt.setText(value.getStt());
+        Email.setText(value.getEmail());
+        KidName.setText(value.getKidName());
+        KidSName.setText(value.getKidSName());
+        KidDoc.setText(value.getKidDoc());
+        Age.setText(value.getAge());
+        KidAge.setText(value.getKidAge());
+
+
+    }
 
     @FXML
     void clear() {
@@ -41,7 +61,7 @@ public class Cadastro implements Initializable{
             SName.clear();
             Doc.clear();
             Age.clear();
-            Add.clear();
+            Addr.clear();
             Numb.clear();
             Zip.clear();
             City.clear();
@@ -72,7 +92,7 @@ public class Cadastro implements Initializable{
     @FXML
     void next(MouseEvent event) throws Exception {
         if(Name.getText() != null && SName.getText() != null && cbx_Doc.getSelectionModel().getSelectedItem() != null &&
-        Doc.getText() != null && Age.getText() != null && Add.getText() != null && Numb.getText() != null &&
+        Doc.getText() != null && Age.getText() != null && Addr.getText() != null && Numb.getText() != null &&
         Zip.getText() != null && City.getText() != null && Stt.getText() != null && Email.getText() != null &&
         Tel.getText() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Pagamento.fxml"));
@@ -111,10 +131,10 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 Age.validate();
         });
-        Add.getValidators().add(validator);
-        Add.focusedProperty().addListener((observable, oldValue, newValue) -> {
+        Addr.getValidators().add(validator);
+        Addr.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue)
-                Add.validate();
+                Addr.validate();
         });
         Numb.getValidators().add(validator);
         Numb.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -166,16 +186,20 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 KidAge.validate();
         });
-
-        try {
+        try{
+            Conexao conexao = new Conexao();
             ResultSet rs = null;
             Statement statement = null;
             conexao.connect();
 
-            statement = conexao.createStatement();
-            rs = statement.executeQuery("Select * from Pessoa");
-
-
+            //Testando!! Inserindo infos do TextField para o DB.
+            rs = statement.executeQuery("Select pes.Nome as Name, pes.Sobrenome as SName, pes.Data_Nascimento as Age, pes.Documento as Doc," +
+                    " pes.Telefone as Tel, c.Email as Email, e.Endereço as Addr, e.Número as Numb, e.CEP as Zip, e.Cidade as City, e.UF as Stt, d.id " +
+                    "from Pessoa p " +
+                    "INNER JOIN Cliente c (on c.Email = p.Documento)" +
+                    "INNER JOIN Dependente d(on d.id = p.Documento) " +
+                    "INNER JOIN Endereço e (on e.id = p.Documento)");
+            //Testando!! Inserindo infos do TextField para o DB.
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
