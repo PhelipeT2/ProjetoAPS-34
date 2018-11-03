@@ -1,5 +1,6 @@
 package sample;
 
+import Banco.Conexao;
 import Model.ModelReserva;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,8 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Reserva implements Initializable {
@@ -82,6 +85,22 @@ public class Reserva implements Initializable {
         l_Dest.setText(value.getDestino());
         qtdDisponivel = value.getQtdAdulto()+ value.getQtdCrianca();
         l_qtdDis.setText(Integer.toString(qtdDisponivel));
+        try{
+            if(this.mReserva != null){
+                Conexao conexao = new Conexao();
+                ResultSet rs = null;
+                Statement statement = null;
+                conexao.connect();
+                statement = conexao.createStatement();
+                rs = statement.executeQuery("select t2.Nome as Origem,t3.Nome as Destino,t4.num_Assento as Assento,t1.DataPartida from voo  t1 inner join Paises  t2 on t1.id_POrigem = t2.id inner join Paises  t3 on t1.id_PDestino = t3.id inner join Assento t4 on t1.id = t4.id_Voo where Origem = \'"+l_Orig.getText()+"\' and Destino = \'"+l_Dest.getText()+"\' and DataPartida = \'"+mReserva.getIda()+"\'");
+                while(rs.next()){
+                    //implementar logica para deixar os assentos cinzas.
+                }
+                System.out.println("Teste");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
