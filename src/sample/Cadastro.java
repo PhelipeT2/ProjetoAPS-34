@@ -1,20 +1,16 @@
 package sample;
 
 import Banco.Conexao;
-import Model.ModelCadastro;
-import Model.ModelReserva;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -23,32 +19,42 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Cadastro implements Initializable{
     public JFXTextField Name, SName, Doc, Age, Add, Numb, Zip, City, Stt, Email, Tel, KidName, KidSName, KidAge, KidDoc;
     public JFXButton next;
     public JFXComboBox <String> cbx_Doc, cbx_KidDoc;
 
-    Stage stage = null;
-    Conexao conexao = new Conexao();
+    private Stage stage = null;
+    private Conexao conexao = new Conexao();
 
     @FXML
-    void clear(MouseEvent event) {
-        Name.clear();
-        SName.clear();
-        Doc.clear();
-        Age.clear();
-        Add.clear();
-        Numb.clear();
-        Zip.clear();
-        City.clear();
-        Stt.clear();
-        Email.clear();
-        Tel.clear();
-        KidName.clear();
-        KidSName.clear();
-        KidAge.clear();
-        KidDoc.clear();
+    void clear() {
+        int opcao = JOptionPane.showConfirmDialog(null,
+                "Deseja realmente limpar os dados ?",
+                "Limpar Dados",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        if(opcao == YES_OPTION) {
+            Name.clear();
+            SName.clear();
+            Doc.clear();
+            Age.clear();
+            Add.clear();
+            Numb.clear();
+            Zip.clear();
+            City.clear();
+            Stt.clear();
+            Email.clear();
+            Tel.clear();
+            KidName.clear();
+            KidSName.clear();
+            KidAge.clear();
+            KidDoc.clear();
+        }else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
+        }
     }
 
     @FXML
@@ -167,7 +173,9 @@ public class Cadastro implements Initializable{
             conexao.connect();
 
             statement = conexao.createStatement();
-            rs = statement.executeQuery("Select Nome and Sobrenome and CPF and Data_Nascimento and Telefone from Pessoa");
+            rs = statement.executeQuery("Select * from Pessoa");
+
+
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
