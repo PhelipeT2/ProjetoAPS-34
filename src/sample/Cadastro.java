@@ -30,6 +30,7 @@ public class Cadastro implements Initializable{
     public JFXComboBox <String> cbx_Doc, cbx_KidDoc;
 
     private Stage stage = null;
+    Conexao conexao = new Conexao();
 
     public void setModelCadastro(ModelCadastro value){
         this.mCadastro = value;
@@ -45,8 +46,6 @@ public class Cadastro implements Initializable{
         KidDoc.setText(value.getKidDoc());
         Age.setText(value.getAge());
         KidAge.setText(value.getKidAge());
-
-
     }
 
     @FXML
@@ -186,20 +185,12 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 KidAge.validate();
         });
-        try{
-            Conexao conexao = new Conexao();
+        try {
             ResultSet rs = null;
             Statement statement = null;
             conexao.connect();
 
-            //Testando!! Inserindo infos do TextField para o DB.
-            rs = statement.executeQuery("Select pes.Nome as Name, pes.Sobrenome as SName, pes.Data_Nascimento as Age, pes.Documento as Doc," +
-                    " pes.Telefone as Tel, c.Email as Email, e.Endereço as Addr, e.Número as Numb, e.CEP as Zip, e.Cidade as City, e.UF as Stt, d.id " +
-                    "from Pessoa p " +
-                    "INNER JOIN Cliente c (on c.Email = p.Documento)" +
-                    "INNER JOIN Dependente d(on d.id = p.Documento) " +
-                    "INNER JOIN Endereço e (on e.id = p.Documento)");
-            //Testando!! Inserindo infos do TextField para o DB.
+            statement = conexao.createStatement();
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());

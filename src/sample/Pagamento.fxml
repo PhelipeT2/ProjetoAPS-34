@@ -6,110 +6,108 @@
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.171">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #57606F;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Pagamento">
    <AnchorPane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #353238;">
-      <HBox layoutX="759.0" prefHeight="50.0" prefWidth="41.0">
-         <MaterialDesignIconView fill="#f21b1b" glyphName="CLOSE" size="24" style="-fx-cursor: hand;">
-            <HBox.margin>
-               <Insets bottom="13.0" top="13.0"/>
-            </HBox.margin>
-         </MaterialDesignIconView>
-      </HBox>
-      <Label layoutX="27.0" layoutY="7.0" prefHeight="35.0" prefWidth="205.0" text="Indians Airlines"
-             textFill="WHITE">
+      <Label layoutX="27.0" layoutY="7.0" prefHeight="35.0" prefWidth="205.0" text="Indians Airlines" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="25.0"/>
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
+      <FontAwesomeIconView fx:id="close" fill="#f21f1f" glyphName="CLOSE" layoutX="770.0" layoutY="33.0" onMouseClicked="#close" size="24" style="-fx-cursor: hand;" wrappingWidth="32.0" />
+      <FontAwesomeIconView fx:id="min" fill="#48dbdb" glyphName="MINUS" layoutX="732.0" layoutY="33.0" onMouseClicked="#min" size="24" style="-fx-cursor: hand;" wrappingWidth="32.0" />
    </AnchorPane>
    <VBox layoutX="14.0" layoutY="62.0" prefHeight="55.0" prefWidth="57.0">
-      <JFXButton prefHeight="55.0" prefWidth="57.0" style="-fx-background-color: #18c67f;" text="  "
-                 textFill="WHITE">
+      <JFXButton fx:id="prev" onMouseClicked="#prev" prefHeight="55.0" prefWidth="57.0" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="  " textFill="WHITE">
          <VBox.margin>
-            <Insets/>
+            <Insets />
          </VBox.margin>
          <graphic>
-            <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" size="32" wrappingWidth="32.0"/>
+            <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" size="32" text="" translateX="5.0" wrappingWidth="32.0" />
          </graphic>
       </JFXButton>
    </VBox>
-   <Label layoutX="238.0" layoutY="339.0" text="Escolha sua forma de pagamento" textFill="WHITE">
+   <Label layoutX="252.0" layoutY="323.0" text="Escolha sua forma de pagamento" textFill="WHITE">
       <font>
-         <Font name="System Bold" size="20.0"/>
+         <Font name="System Bold" size="20.0" />
       </font>
    </Label>
-   <Label layoutX="241.0" layoutY="146.0" text="Número do Cartão: " textFill="WHITE">
+   <Label layoutX="234.0" layoutY="107.0" text="Número do Cartão: " textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <JFXTextField focusColor="WHITE" layoutX="370.0" layoutY="144.0" prefHeight="25.0" prefWidth="192.0"
-                 unFocusColor="WHITE"/>
-   <Label layoutX="241.0" layoutY="278.0" text="Nome do Titular: " textFill="WHITE">
+   <JFXTextField fx:id="NCard" focusColor="WHITE" layoutX="373.0" layoutY="105.0" prefHeight="25.0" prefWidth="192.0" unFocusColor="WHITE" />
+   <Label layoutX="225.0" layoutY="238.0" text="Nome do Titular: " textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <JFXTextField focusColor="WHITE" layoutX="354.0" layoutY="276.0" prefHeight="25.0" prefWidth="213.0"
-                 unFocusColor="WHITE"/>
-   <Label layoutX="275.0" layoutY="235.0" text="Validade: " textFill="WHITE">
+   <JFXTextField fx:id="Tit" focusColor="WHITE" layoutX="355.0" layoutY="236.0" prefHeight="25.0" prefWidth="213.0" unFocusColor="WHITE" />
+   <Label layoutX="251.0" layoutY="191.0" text="Validade: " textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <Label layoutX="475.0" layoutY="237.0" prefHeight="17.0" prefWidth="65.0" text="Ex: MM/AA" textFill="WHITE"/>
-   <JFXTextField focusColor="WHITE" layoutX="340.0" layoutY="233.0" unFocusColor="WHITE"/>
-   <JFXRadioButton layoutX="313.0" layoutY="195.0" text="Visa" textFill="WHITE">
+   <Label layoutX="480.0" layoutY="193.0" prefHeight="17.0" prefWidth="65.0" text="Ex: MM/AA" textFill="WHITE" />
+   <JFXTextField fx:id="Valid" focusColor="WHITE" layoutX="327.0" layoutY="189.0" unFocusColor="WHITE" />
+   <JFXRadioButton fx:id="visa" layoutX="294.0" layoutY="152.0" prefHeight="21.0" prefWidth="74.0" text="Visa" textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </JFXRadioButton>
-   <JFXRadioButton layoutX="394.0" layoutY="195.0" text="MasterCard" textFill="WHITE">
+   <JFXRadioButton fx:id="master" layoutX="394.0" layoutY="152.0" text="MasterCard" textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </JFXRadioButton>
-   <Label layoutX="341.0" layoutY="90.0" text="Pagamento" textFill="WHITE">
+   <Label layoutX="342.0" layoutY="62.0" text="Pagamento" textFill="WHITE">
       <font>
-         <Font name="System Bold" size="22.0"/>
+         <Font name="System Bold" size="22.0" />
       </font>
    </Label>
-   <JFXRadioButton layoutX="241.0" layoutY="378.0" text="Débito" textFill="WHITE">
+   <JFXRadioButton fx:id="deb" layoutX="276.0" layoutY="359.0" text="Débito" textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </JFXRadioButton>
-   <JFXRadioButton layoutX="461.0" layoutY="378.0" text="Crédito" textFill="WHITE">
+   <JFXRadioButton fx:id="cred" layoutX="473.0" layoutY="359.0" text="Crédito" textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </JFXRadioButton>
-   <JFXComboBox focusColor="WHITE" layoutX="466.0" layoutY="408.0" promptText="Parcelamentos" unFocusColor="WHITE"/>
-   <Label layoutX="307.0" layoutY="456.0" text="Senha: " textFill="WHITE">
+   <JFXComboBox fx:id="cbx_Parc" focusColor="WHITE" layoutX="476.0" layoutY="415.0" onMouseClicked="#optParc" prefHeight="25.0" prefWidth="126.0" unFocusColor="WHITE" />
+   <Label layoutX="297.0" layoutY="467.0" text="Senha: " textFill="WHITE">
       <font>
-         <Font size="15.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <JFXPasswordField focusColor="WHITE" layoutX="354.0" layoutY="454.0" unFocusColor="WHITE"/>
-   <JFXButton layoutX="262.0" layoutY="531.0" style="-fx-background-color: #18c67f;" text="Validar Pagamento"
-              textFill="WHITE">
+   <JFXPasswordField fx:id="pass" focusColor="WHITE" layoutX="355.0" layoutY="465.0" unFocusColor="WHITE" />
+   <JFXButton fx:id="next" layoutX="423.0" layoutY="531.0" onMouseClicked="#next" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="Validar Pagamento" textFill="WHITE">
       <font>
-         <Font size="14.0"/>
+         <Font name="System Bold" size="14.0" />
       </font>
    </JFXButton>
-   <JFXButton layoutX="433.0" layoutY="531.0" style="-fx-background-color: #18c67f;" text="Limpar Dados"
-              textFill="WHITE">
+   <Label layoutX="372.0" layoutY="394.0" text="Parcelamentos:" textFill="WHITE">
       <font>
-         <Font size="14.0"/>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label layoutX="313.0" layoutY="290.0" text="CPF:" textFill="WHITE">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <JFXTextField fx:id="Doc" focusColor="WHITE" layoutX="348.0" layoutY="288.0" prefHeight="25.0" prefWidth="148.0" unFocusColor="WHITE" />
+   <JFXButton fx:id="clear" layoutX="244.0" layoutY="531.0" onMouseClicked="#clear" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="Limpar Dados" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
       </font>
    </JFXButton>
+   <JFXComboBox fx:id="cbx_ParcDeb" focusColor="WHITE" layoutX="250.0" layoutY="415.0" onMouseClicked="#optParcDeb" prefHeight="25.0" prefWidth="126.0" unFocusColor="WHITE" />
 </AnchorPane>
