@@ -98,7 +98,7 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" rotate="40.6" size="24" />
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="657.0" layoutY="455.0" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #18c67f;" text="Avançar " textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="657.0" layoutY="455.0" onAction="#ProxScene" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #18c67f;" text="Avançar " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -158,7 +158,7 @@
                   </Text>
                </children>
             </GridPane>
-            <GridPane layoutX="57.0" layoutY="85.0" prefHeight="285.0" prefWidth="688.0">
+            <GridPane fx:id="GP_lugares" layoutX="57.0" layoutY="85.0" prefHeight="285.0" prefWidth="688.0">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="20.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="20.0" />
