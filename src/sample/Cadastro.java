@@ -18,7 +18,9 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import static javax.swing.JOptionPane.YES_OPTION;
@@ -30,7 +32,6 @@ public class Cadastro implements Initializable{
     public JFXComboBox <String> cbx_Doc, cbx_KidDoc;
 
     private Stage stage = null;
-    Conexao conexao = new Conexao();
 
     public void setModelCadastro(ModelCadastro value){
         this.mCadastro = value;
@@ -185,12 +186,17 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 KidAge.validate();
         });
+
         try {
+            Conexao conexao = new Conexao();
             ResultSet rs = null;
             Statement statement = null;
             conexao.connect();
 
             statement = conexao.createStatement();
+            statement.executeUpdate("insert into Pessoa(Nome,Sobrenome,Data_Nascimento, Documento, Telefone) " +
+                    "values('ANNY','GONCALVES','03/11/1994','44266859814','11963958694')");
+
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
