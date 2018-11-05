@@ -4,7 +4,6 @@ import Banco.Conexao;
 import Model.ModelPagamento;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.fxml.FXML;
@@ -27,10 +26,9 @@ import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Pagamento implements Initializable {
     private ModelPagamento mPagamento;
-    public JFXComboBox <String> cbx_Parc, cbx_ParcDeb;
+    public JFXComboBox <String> cbx_Parc, cbx_Band;
     public JFXTextField NCard, Valid, Tit, Doc;
     public JFXPasswordField pass;
-    public JFXRadioButton visa, master, deb, cred;
 
     Stage stage = null;
 
@@ -87,7 +85,16 @@ public class Pagamento implements Initializable {
             conexao.connect();
 
             statement = conexao.createStatement();
-
+            rs = statement.executeQuery("Select Tipo_Parcelamento from Parcelamento");
+            while(rs.next()){
+                cbx_Parc.getItems().add(rs.getString("Tipo_Parcelamento"));
+            }
+            statement = conexao.createStatement();
+            rs = statement.executeQuery("Select Tipo_Bandeira from Bandeira");
+            while(rs.next()){
+                cbx_Band.getItems().add(rs.getString("Tipo_Bandeira"));
+            }
+            statement.close();
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
@@ -107,13 +114,11 @@ public class Pagamento implements Initializable {
         stage.setIconified(true);
     }
 
-    public void optParc(MouseEvent mouseEvent) { cbx_Parc.getItems().addAll("1x", "2x", "3x"); }
-
     @FXML
     void next(MouseEvent event) throws Exception {
         if(NCard.getText() != null && Valid.getText() != null && Doc.getText() != null && Tit.getText() != null
                 && pass.getText() != null && cbx_Parc.getSelectionModel().getSelectedItem() != null
-                || cbx_ParcDeb.getSelectionModel().getSelectedItem() != null) {
+                || cbx_Band.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Recibo.fxml"));
             Parent root = loader.load();
             Scene home_scene = new Scene(root);
@@ -142,6 +147,4 @@ public class Pagamento implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Pagamento.fxml"));
         }
     }
-
-    public void optParcDeb(MouseEvent mouseEvent) { cbx_ParcDeb.getItems().addAll("À vista"); }
 }
