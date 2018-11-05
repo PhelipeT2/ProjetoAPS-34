@@ -80,6 +80,9 @@ public class Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Reserva.fxml"));
             Parent root = loader.load();
             Reserva secondController = loader.getController();
+            if(cbx_Crianca.getValue() == null){
+                cbx_Crianca.setValue(0);
+            }
             secondController.setmReserva(new ModelReserva(cbx_Origem.getValue(), cbx_Destino.getValue(), cbx_Ida.getValue(), cbx_Adulto.getValue(), cbx_Crianca.getValue())); // metodo para passar valor.
             Scene home_scene = new Scene(root);
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
