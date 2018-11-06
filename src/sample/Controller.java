@@ -42,14 +42,14 @@ public class Controller implements Initializable {
     @FXML
     private JFXButton b_Reserva;
 
-    double x,y;
+    double x, y;
     Stage stage = null;
 
     Conexao conexao = new Conexao();
 
     @FXML
     void dragedMenu(MouseEvent event) {
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
@@ -59,28 +59,31 @@ public class Controller implements Initializable {
         x = event.getSceneX();
         y = event.getSceneY();
     }
+
     @FXML
     void min(MouseEvent event) {
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
     void close(MouseEvent event) {
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+
     public void closeIcon(ActionEvent event) {
         Platform.exit();
         System.exit(0);
     }
+
     public void handleButtonAction(ActionEvent event) throws Exception {
 
-        if(cbx_Origem.getSelectionModel().getSelectedItem() != null && cbx_Destino.getSelectionModel().getSelectedItem() != null && cbx_Ida.getValue() != null && cbx_Adulto.getSelectionModel().getSelectedItem() != null) {
+        if (cbx_Origem.getSelectionModel().getSelectedItem() != null && cbx_Destino.getSelectionModel().getSelectedItem() != null && cbx_Ida.getValue() != null && cbx_Adulto.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Reserva.fxml"));
             Parent root = loader.load();
             Reserva secondController = loader.getController();
-            if(cbx_Crianca.getValue() == null){
+            if (cbx_Crianca.getValue() == null) {
                 cbx_Crianca.setValue(0);
             }
             secondController.setmReserva(new ModelReserva(cbx_Origem.getValue(), cbx_Destino.getValue(), cbx_Ida.getValue(), cbx_Adulto.getValue(), cbx_Crianca.getValue())); // metodo para passar valor.
@@ -94,7 +97,7 @@ public class Controller implements Initializable {
 //        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 //        app_stage.setScene(home_scene);
 //        app_stage.show();
-        }else{
+        } else {
             System.out.println("Preencha os campos!");
         }
     }
@@ -106,22 +109,22 @@ public class Controller implements Initializable {
 
         cbx_Origem.getValidators().add(validator);
         cbx_Origem.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 cbx_Origem.validate();
         });
         cbx_Destino.getValidators().add(validator);
         cbx_Destino.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 cbx_Destino.validate();
         });
         cbx_Adulto.getValidators().add(validator);
         cbx_Adulto.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 cbx_Adulto.validate();
         });
         cbx_Ida.getValidators().add(validator);
         cbx_Ida.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 cbx_Ida.validate();
         });
 
@@ -138,12 +141,12 @@ public class Controller implements Initializable {
             statement = conexao.createStatement();
             rs = statement.executeQuery("Select Nome from Paises");
 
-            while(rs.next()){
-            cbx_Origem.getItems().add(rs.getString("Nome"));
-            cbx_Destino.getItems().add(rs.getString("Nome"));
+            while (rs.next()) {
+                cbx_Origem.getItems().add(rs.getString("Nome"));
+                cbx_Destino.getItems().add(rs.getString("Nome"));
             }
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 }
