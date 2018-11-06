@@ -98,7 +98,7 @@
                   <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" rotate="40.6" size="24" />
                </graphic>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="657.0" layoutY="455.0" onAction="#ProxScene" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #18c67f;" text="Avançar " textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="RIGHT" layoutX="618.0" layoutY="485.0" onAction="#ProxScene" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #18c67f;" text="Avançar " textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -372,6 +372,11 @@
                   <Font size="19.0" />
                </font>
             </Label>
+            <Text fx:id="l_Valor" fill="#d32424" layoutX="621.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor:" wrappingWidth="160.6240194477141">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
          </children></AnchorPane>
    </children>
 </AnchorPane>

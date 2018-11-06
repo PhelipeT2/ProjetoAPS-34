@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ModelReserva {
 
@@ -9,6 +10,16 @@ public class ModelReserva {
     private LocalDate ida;
     private int qtdAdulto;
     private int qtdCrianca;
+
+    public List<Integer> getListaAssentos() {
+        return listaAssentos;
+    }
+
+    public void setListaAssentos(List<Integer> listaAssentos) {
+        this.listaAssentos = listaAssentos;
+    }
+
+    private List<Integer> listaAssentos;
 
     public ModelReserva(String origem, String destino, LocalDate ida, int qtdAdulto, int qtdCrianca) {
         this.origem = origem;

@@ -20,6 +20,8 @@ import javax.swing.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Reserva implements Initializable {
@@ -35,6 +37,8 @@ public class Reserva implements Initializable {
 
     @FXML
     private Text l_qtdDis;
+    @FXML
+    private Text l_Valor;
 
     double x,y;
     Stage stage = null;
@@ -65,28 +69,31 @@ public class Reserva implements Initializable {
     @FXML
     void ProxScene(ActionEvent event) {
         try {
-            Conexao conexao = new Conexao();
+           // Conexao conexao = new Conexao();
+            List<Integer> list = new ArrayList<>();
             int posicao;
-            ResultSet rs = null;
-            Statement statement = null;
-            conexao.connect();
-            statement = conexao.createStatement();
+//            ResultSet rs = null;
+//            Statement statement = null;
+//            conexao.connect();
+//            statement = conexao.createStatement();
             if (qtdDisponivel == 0) {
+                childrens = GP_lugares.getChildren();
+                for (Node node : childrens) {
+                    if (node.getStyle().equals("-fx-fill: #a11616; -fx-cursor: Hand;")) {
+                        posicao = childrens.indexOf(node);
+                        System.out.println(posicao);
+                        list.add(posicao);
+                        //statement.executeUpdate("insert into assento(id,sequencia,id_voo,num_Assento) values(1,(select MAX(sequencia) from assento where id = '1')+1,1,"+posicao+")");
+                    }
+                }
+                this.mReserva.setListaAssentos(list);
+                //statement.close();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
                 Parent root = loader.load();
                 Scene home_scene = new Scene(root);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 app_stage.setScene(home_scene);
                 app_stage.show();
-                childrens = GP_lugares.getChildren();
-                for (Node node : childrens) {
-                    if (node.getStyle().equals("-fx-fill: #a11616; -fx-cursor: Hand;")) {
-                        posicao = childrens.indexOf(node);
-                        System.out.println(posicao);
-                        statement.executeUpdate("insert into assento(id,sequencia,id_voo,num_Assento) values(1,(select MAX(sequencia) from assento where id = '1')+1,1,"+posicao+")");
-                    }
-                }
-                statement.close();
             } else {
                 JOptionPane.showMessageDialog(null, "Quantidade maxima não atiginda.");
             }
@@ -145,6 +152,7 @@ public class Reserva implements Initializable {
                 }
                 System.out.println("Teste");
                 statement.close();
+                l_Valor.setText("Valor: R$"+(qtdDisponivel*150));
             }
         }catch (Exception e){
             System.out.println(e.getMessage());

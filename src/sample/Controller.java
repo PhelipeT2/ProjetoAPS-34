@@ -1,7 +1,6 @@
 package sample;
 
 import Banco.Conexao;
-import Model.ModelDependentes;
 import Model.ModelReserva;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -45,6 +44,7 @@ public class Controller implements Initializable {
 
     double x, y;
     Stage stage = null;
+    String itemReserva;
 
     Conexao conexao = new Conexao();
 
@@ -115,6 +115,14 @@ public class Controller implements Initializable {
         cbx_Origem.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue)
                 cbx_Origem.validate();
+        });
+        cbx_Origem.valueProperty().addListener((observable, oldValue, newValue) -> {
+            itemReserva = newValue;
+            cbx_Destino.getItems().remove(newValue);
+            if(oldValue != null){
+                cbx_Destino.getItems().add(oldValue);
+            }
+            System.out.println("ob: "+observable+"\n"+oldValue+"\n"+newValue);
         });
         cbx_Destino.getValidators().add(validator);
         cbx_Destino.focusedProperty().addListener((observable, oldValue, newValue) -> {

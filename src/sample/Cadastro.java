@@ -2,9 +2,7 @@ package sample;
 
 import Banco.Conexao;
 import Model.ModelCadastro;
-import Model.ModelReserva;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.fxml.FXML;
@@ -18,11 +16,10 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+
 import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Cadastro implements Initializable{
