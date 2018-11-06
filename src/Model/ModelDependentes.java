@@ -7,40 +7,48 @@ public class ModelDependentes {
     private String DepName;
     private String DepSName;
     private Date DepAge;
-    private int DepDoc;
-    private int QtdAdulto;
-    private int QtdCrianca;
+    private String DepDoc;
 
-
-    public ModelDependentes(int DepDoc, int QtdAdulto) {
-        this.DepName = DepName;
-        this.DepSName = DepSName;
-        this.DepAge = DepAge;
-        this.DepDoc = DepDoc;
-        this.QtdAdulto = QtdAdulto;
-        this.QtdCrianca = QtdCrianca;
+    public ModelDependentes(String depName, String depSName, Date depAge, String depDoc) {
+        DepName = depName;
+        DepSName = depSName;
+        DepAge = depAge;
+        DepDoc = depDoc;
     }
-
     public String getDepName() {
         return DepName;
+    }
+
+    public void setDepName(String depName) {
+        DepName = depName;
     }
 
     public String getDepSName() {
         return DepSName;
     }
 
+    public void setDepSName(String depSName) {
+        DepSName = depSName;
+    }
+
     public Date getDepAge() {
         return DepAge;
     }
 
-    public int getDepDoc() {
+    public void setDepAge(Date depAge) {
+        DepAge = depAge;
+    }
+
+    public String getDepDoc() {
         return DepDoc;
     }
 
-    public int getQtdAdulto() {
-        return QtdAdulto;
+    public void setDepDoc(String depDoc) {
+        DepDoc = depDoc;
     }
 
-    public int getQtdCrianca() { return QtdCrianca; }
+
+
+
 
 }
