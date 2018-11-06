@@ -27,9 +27,8 @@ import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Cadastro implements Initializable{
     private ModelCadastro mCadastro;
-    public JFXTextField Name, SName, Doc, Age, Addr, Numb, Zip, City, Stt, Email, Tel, KidName, KidSName, KidAge, KidDoc;
+    public JFXTextField Name, SName, Doc, Age, Email, Tel;
     public JFXButton next;
-    public JFXComboBox <String> cbx_Doc, cbx_KidDoc;
 
     private Stage stage = null;
 
@@ -38,15 +37,8 @@ public class Cadastro implements Initializable{
         Name.setText(value.getName());
         SName.setText(value.getSName());
         Doc.setText(value.getDoc());
-        Addr.setText(value.getAdd());
-        City.setText(value.getCity());
-        Stt.setText(value.getStt());
         Email.setText(value.getEmail());
-        KidName.setText(value.getKidName());
-        KidSName.setText(value.getKidSName());
-        KidDoc.setText(value.getKidDoc());
-        Age.setText(value.getAge());
-        KidAge.setText(value.getKidAge());
+        Age.setText(String.valueOf(value.getAge()));
     }
 
     @FXML
@@ -61,17 +53,8 @@ public class Cadastro implements Initializable{
             SName.clear();
             Doc.clear();
             Age.clear();
-            Addr.clear();
-            Numb.clear();
-            Zip.clear();
-            City.clear();
-            Stt.clear();
             Email.clear();
             Tel.clear();
-            KidName.clear();
-            KidSName.clear();
-            KidAge.clear();
-            KidDoc.clear();
         }else{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
         }
@@ -91,10 +74,8 @@ public class Cadastro implements Initializable{
 
     @FXML
     void next(MouseEvent event) throws Exception {
-        if(Name.getText() != null && SName.getText() != null && cbx_Doc.getSelectionModel().getSelectedItem() != null &&
-        Doc.getText() != null && Age.getText() != null && Addr.getText() != null && Numb.getText() != null &&
-        Zip.getText() != null && City.getText() != null && Stt.getText() != null && Email.getText() != null &&
-        Tel.getText() != null) {
+        if(Name.getText() != null && SName.getText() != null && Doc.getText() != null && Age.getText() != null
+                && Email.getText() != null && Tel.getText() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Pagamento.fxml"));
             Parent root = loader.load();
             Scene home_scene = new Scene(root);
@@ -131,31 +112,6 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 Age.validate();
         });
-        Addr.getValidators().add(validator);
-        Addr.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                Addr.validate();
-        });
-        Numb.getValidators().add(validator);
-        Numb.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                Numb.validate();
-        });
-        Zip.getValidators().add(validator);
-        Zip.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                Zip.validate();
-        });
-        City.getValidators().add(validator);
-        City.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                City.validate();
-        });
-        Stt.getValidators().add(validator);
-        Stt.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                Stt.validate();
-        });
         Email.getValidators().add(validator);
         Email.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue)
@@ -166,37 +122,19 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 Tel.validate();
         });
-        KidName.getValidators().add(validator);
-        KidName.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                KidName.validate();
-        });
-        KidSName.getValidators().add(validator);
-        KidSName.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                KidSName.validate();
-        });
-        KidDoc.getValidators().add(validator);
-        KidDoc.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                KidDoc.validate();
-        });
-        KidAge.getValidators().add(validator);
-        KidAge.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                KidAge.validate();
-        });
 
         try {
             Conexao conexao = new Conexao();
             ResultSet rs = null;
             Statement statement = null;
             conexao.connect();
-
-            statement = conexao.createStatement();
-            statement.executeUpdate("insert into Pessoa(Nome,Sobrenome,Data_Nascimento, Documento, Telefone) " +
-                    "values('ANNY','GONCALVES','03/11/1994','44266859814','11963958694')");
-
+            //statement = conexao.createStatement();
+            //statement.executeUpdate("insert into Pessoa(Nome,Sobrenome,Data_Nascimento, Documento, Telefone) " +
+            //        "values Nome = \'"+Name.getText()+"\' and Sobrenome = \'"+SName.getText()+"\' and Data_Nascimento = \'"+Age.getText()+"\' " +
+            //        "and Documento = \'"+Doc.getText()+"\' and Telefone = \'"+Tel.getText()+" \'");
+            //statement.executeUpdate("insert into Endereço (Endereço,Número,CEP, Cidade, UF) " +
+            //        "values Endereço = \'"+Addr.getText()+"\' and Número = \'"+Numb.getText()+"\' and CEP = \'"+Zip.getText()+"\' " +
+            //        "and Cidade = \'"+City.getText()+"\' and UF = \'"+Stt.getText()+" \'");
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
@@ -210,13 +148,5 @@ public class Cadastro implements Initializable{
         Stage app_stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         app_stage.setScene(home_scene);
         app_stage.show();
-    }
-
-    public void opt1(MouseEvent mouseEvent) {
-        cbx_Doc.getItems().addAll("Passaporte", "CPF");
-    }
-
-    public void opt2(MouseEvent mouseEvent) {
-        cbx_KidDoc.getItems().addAll("Passaporte", "CPF");
     }
 }
