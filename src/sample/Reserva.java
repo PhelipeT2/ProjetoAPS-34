@@ -72,6 +72,12 @@ public class Reserva implements Initializable {
             conexao.connect();
             statement = conexao.createStatement();
             if (qtdDisponivel == 0) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
+                Parent root = loader.load();
+                Scene home_scene = new Scene(root);
+                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                app_stage.setScene(home_scene);
+                app_stage.show();
                 childrens = GP_lugares.getChildren();
                 for (Node node : childrens) {
                     if (node.getStyle().equals("-fx-fill: #a11616; -fx-cursor: Hand;")) {

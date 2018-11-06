@@ -76,7 +76,7 @@ public class Cadastro implements Initializable{
     void next(MouseEvent event) throws Exception {
         if(Name.getText() != null && SName.getText() != null && Doc.getText() != null && Age.getText() != null
                 && Email.getText() != null && Tel.getText() != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Pagamento.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dependentes.fxml"));
             Parent root = loader.load();
             Scene home_scene = new Scene(root);
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

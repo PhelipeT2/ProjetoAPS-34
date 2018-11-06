@@ -1,6 +1,7 @@
 package sample;
 
 import Banco.Conexao;
+import Model.ModelDependentes;
 import Model.ModelReserva;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -91,6 +92,9 @@ public class Controller implements Initializable {
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.setScene(home_scene);
             app_stage.show();
+
+
+
 //        System.out.println("Proxima cena");
 //        Parent parent = FXMLLoader.load(getClass().getResource("Reserva.fxml"));
 //        Scene home_scene = new Scene(parent);
