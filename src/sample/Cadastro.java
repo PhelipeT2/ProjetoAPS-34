@@ -3,8 +3,10 @@ package sample;
 import Banco.Conexao;
 import Model.ModelCadastro;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
+import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,18 +26,38 @@ import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Cadastro implements Initializable{
     private ModelCadastro mCadastro;
-    public JFXTextField Name, SName, Doc, Age, Email, Tel;
-    public JFXButton next;
+    public JFXTextField Name, Doc, Age, Email, Tel;
+    public JFXPasswordField Pwd;
 
     private Stage stage = null;
 
-    public void setModelCadastro(ModelCadastro value){
+    public void setModelCadastro(ModelCadastro value) {
         this.mCadastro = value;
         Name.setText(value.getName());
-        SName.setText(value.getSName());
         Doc.setText(value.getDoc());
         Email.setText(value.getEmail());
         Age.setText(String.valueOf(value.getAge()));
+        Tel.setText(String.valueOf(value.getTel()));
+        Pwd.setText(value.getPwd());
+
+        try{
+            if(this.mCadastro != null){
+                Conexao conexao = new Conexao();
+                ResultSet rs = null;
+                Statement statement = null;
+                conexao.connect();
+                statement = conexao.createStatement();
+                rs = statement.executeQuery("SELECT P.id as Pessoa, P.Nome as Pessoa, P.Sobrenome as Pessoa, P.Data_Nascimento as Pessoa, P.Documento as Pessoa," +
+                        "P.Telefone as Pessoa, C.Email as Cliente, C.Senha as Cliente \n" +
+                        "FROM Pessoa as P \n" +
+                        "INNER JOIN Cliente as C ON P.Documento = C.id_Pessoa");
+
+                System.out.println("Teste");
+                statement.close();
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -47,11 +69,11 @@ public class Cadastro implements Initializable{
                 JOptionPane.QUESTION_MESSAGE);
         if(opcao == YES_OPTION) {
             Name.clear();
-            SName.clear();
             Doc.clear();
             Age.clear();
             Email.clear();
             Tel.clear();
+            Pwd.clear();
         }else{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
         }
@@ -71,8 +93,24 @@ public class Cadastro implements Initializable{
 
     @FXML
     void next(MouseEvent event) throws Exception {
-        if(Name.getText() != null && SName.getText() != null && Doc.getText() != null && Age.getText() != null
-                && Email.getText() != null && Tel.getText() != null) {
+        try {
+            Conexao conexao = new Conexao();
+            ResultSet rs = null;
+            Statement statement = null;
+            conexao.connect();
+            statement = conexao.createStatement();
+            statement.executeUpdate("insert into Pessoa(id, Nome, Data_Nascimento, Documento, Telefone) " +
+                    "values Nome = \'"+Name.getText()+"\' and Data_Nascimento = \'"+Age.getText()+"\' " +
+                    "and Documento = \'"+Doc.getText()+"\' and Telefone = \'"+Tel.getText()+" \'");
+            statement.executeUpdate("insert into Cliente(CPF, Email, Senha) " +
+                    "values CPF = \'"+Doc.getText()+"\' and Email = \'"+Email.getText()+"\' and Senha = \'"+Pwd.getText()+"\' ");
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        if(Name.getText() != null && Doc.getText() != null && Age.getText() != null
+                && Email.getText() != null && Tel.getText() != null && Pwd.getText() !=null) {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Dependentes.fxml"));
             Parent root = loader.load();
             Scene home_scene = new Scene(root);
@@ -94,11 +132,6 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 Name.validate();
         });
-        SName.getValidators().add(validator);
-        SName.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
-                SName.validate();
-        });
         Doc.getValidators().add(validator);
         Doc.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if(!newValue)
@@ -119,23 +152,6 @@ public class Cadastro implements Initializable{
             if(!newValue)
                 Tel.validate();
         });
-
-        try {
-            Conexao conexao = new Conexao();
-            ResultSet rs = null;
-            Statement statement = null;
-            conexao.connect();
-            //statement = conexao.createStatement();
-            //statement.executeUpdate("insert into Pessoa(Nome,Sobrenome,Data_Nascimento, Documento, Telefone) " +
-            //        "values Nome = \'"+Name.getText()+"\' and Sobrenome = \'"+SName.getText()+"\' and Data_Nascimento = \'"+Age.getText()+"\' " +
-            //        "and Documento = \'"+Doc.getText()+"\' and Telefone = \'"+Tel.getText()+" \'");
-            //statement.executeUpdate("insert into Endereço (Endereço,Número,CEP, Cidade, UF) " +
-            //        "values Endereço = \'"+Addr.getText()+"\' and Número = \'"+Numb.getText()+"\' and CEP = \'"+Zip.getText()+"\' " +
-            //        "and Cidade = \'"+City.getText()+"\' and UF = \'"+Stt.getText()+" \'");
-
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
     }
 
     public void prev(MouseEvent mouseEvent) throws Exception {

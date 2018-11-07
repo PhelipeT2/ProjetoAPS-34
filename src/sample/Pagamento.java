@@ -38,7 +38,7 @@ public class Pagamento implements Initializable {
         Valid.setText(value.getValid());
         Tit.setText(value.getTit());
         Doc.setText(value.getDoc());
-        pass.setText(value.getpass());
+        pass.setText(value.getPass());
     }
 
     @FXML

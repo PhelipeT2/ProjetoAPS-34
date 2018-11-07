@@ -74,7 +74,7 @@ public class Login implements Initializable {
     public void setModelCadastro(ModelCadastro value) {
         this.mLogin = value;
         textCpf.setText(value.getName());
-        textSenha.setText(value.getSName());
+        //textSenha.setText(value.getSName());
     }
 
     @FXML
