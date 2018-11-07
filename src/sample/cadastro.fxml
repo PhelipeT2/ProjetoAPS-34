@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #57606F;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Cadastro">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #57606F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Cadastro">
    <AnchorPane prefHeight="109.0" prefWidth="800.0">
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="177.0" layoutY="64.0" prefHeight="35.0" prefWidth="465.0" text="Faça o seu cadastro!" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="62.0" prefHeight="35.0" prefWidth="465.0" text="Faça o seu cadastro!" textFill="WHITE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
       <HBox layoutX="720.0" prefHeight="50.0" prefWidth="80.0" />
-      <JFXButton accessibleText="Voltar" layoutX="12.0" layoutY="54.0" onMouseClicked="#prev" prefHeight="50.0" prefWidth="43.0" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="  " textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="54.0">
+      <JFXButton accessibleText="Voltar" layoutX="12.0" layoutY="54.0" onMouseClicked="#prev" prefHeight="50.0" prefWidth="43.0" style="-fx-background-color: #63a2d0; -fx-cursor: hand; -fx-background-radius: 20;" text="  " textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="54.0">
          <padding>
             <Insets bottom="15.0" left="-5.0" right="10.0" />
          </padding>
@@ -31,87 +36,77 @@
          </font>
       </Label>
    </Pane>
-   <JFXButton fx:id="next" contentDisplay="RIGHT" layoutX="413.0" layoutY="534.0" onMouseClicked="#next" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="Salvar Dados e Avançar" textAlignment="CENTER" textFill="#f8f7f7">
+   <JFXButton fx:id="next" contentDisplay="RIGHT" layoutX="413.0" layoutY="534.0" onMouseClicked="#next" style="-fx-background-color: #63a2d0; -fx-cursor: hand; -fx-background-radius: 20;" text="Salvar Dados e Avançar" textAlignment="CENTER" textFill="#f8f7f7">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
    </JFXButton>
-   <JFXButton layoutX="245.0" layoutY="534.0" onMouseClicked="#clear" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="Limpar Dados" textAlignment="CENTER" textFill="WHITE">
+   <JFXButton layoutX="245.0" layoutY="534.0" onMouseClicked="#clear" style="-fx-background-color: #63a2d0; -fx-cursor: hand; -fx-background-radius: 20;" text="Limpar Dados" textAlignment="CENTER" textFill="WHITE">
       <font>
          <Font name="System Bold" size="14.0" />
       </font>
    </JFXButton>
-   <Label layoutX="61.0" layoutY="174.0" text="Nome: " textFill="WHITE">
+   <Label layoutX="53.0" layoutY="324.0" text="Nome Completo: " textFill="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <Label layoutX="56.0" layoutY="269.0" text="Documento:" textFill="WHITE">
+   <Label layoutX="53.0" layoutY="210.0" text="Documento:" textFill="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="Doc" focusColor="WHITE" layoutX="147.0" layoutY="264.0" prefHeight="28.0" prefWidth="170.0" unFocusColor="WHITE">
+   <JFXTextField fx:id="Doc" focusColor="WHITE" layoutX="160.0" layoutY="204.0" prefHeight="28.0" prefWidth="170.0" unFocusColor="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </JFXTextField>
-   <Label layoutX="392.0" layoutY="271.0" text="Data de Nascimento:" textFill="WHITE">
+   <Label layoutX="380.0" layoutY="210.0" text="Data de Nascimento:" textFill="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="Name" focusColor="WHITE" layoutX="113.0" layoutY="171.0" prefHeight="28.0" prefWidth="238.0" unFocusColor="WHITE">
+   <JFXTextField fx:id="Name" focusColor="WHITE" layoutX="190.0" layoutY="318.0" prefHeight="28.0" prefWidth="238.0" unFocusColor="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </JFXTextField>
-   <Label layoutX="392.0" layoutY="174.0" text="Sobrenome:" textFill="WHITE">
+   <JFXTextField fx:id="Age" focusColor="WHITE" layoutX="551.0" layoutY="204.0" prefHeight="37.0" prefWidth="169.0" unFocusColor="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </JFXTextField>
+   <Label layoutX="56.0" layoutY="415.0" text="Email: " textFill="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="SName" focusColor="WHITE" layoutX="485.0" layoutY="171.0" prefHeight="30.0" prefWidth="259.0" unFocusColor="WHITE">
+   <JFXTextField fx:id="Email" focusColor="WHITE" layoutX="116.0" layoutY="409.0" prefHeight="37.0" prefWidth="316.0" unFocusColor="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </JFXTextField>
-   <JFXTextField fx:id="Age" focusColor="WHITE" layoutX="548.0" layoutY="267.0" unFocusColor="WHITE">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </JFXTextField>
-   <Label layoutX="56.0" layoutY="366.0" text="Email: " textFill="WHITE">
+   <Label layoutX="454.0" layoutY="324.0" text="Telefone: " textFill="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="Email" focusColor="WHITE" layoutX="102.0" layoutY="360.0" prefHeight="37.0" prefWidth="322.0" unFocusColor="WHITE">
+   <JFXTextField fx:id="Tel" focusColor="WHITE" layoutX="551.0" layoutY="318.0" prefHeight="30.0" prefWidth="170.0" unFocusColor="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </JFXTextField>
-   <Label layoutX="53.0" layoutY="459.0" text="Telefone: " textFill="WHITE">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </Label>
-   <JFXTextField fx:id="Tel" focusColor="WHITE" layoutX="130.0" layoutY="453.0" prefHeight="30.0" prefWidth="170.0" unFocusColor="WHITE">
-      <font>
-         <Font size="16.0" />
-      </font>
-   </JFXTextField>
-   <Label layoutX="107.0" layoutY="122.0" text="Passageiro 1:" textFill="WHITE">
+   <Label layoutX="53.0" layoutY="129.0" text="Passageiro 1:" textFill="WHITE">
       <font>
          <Font size="13.0" />
       </font>
    </Label>
-   <Label layoutX="455.0" layoutY="366.0" text="Senha:" textFill="WHITE">
+   <Label layoutX="454.0" layoutY="415.0" text="Senha:" textFill="WHITE">
       <font>
          <Font size="16.0" />
       </font>
    </Label>
-   <JFXPasswordField focusColor="WHITE" layoutX="510.0" layoutY="366.0" unFocusColor="WHITE">
+   <JFXPasswordField focusColor="WHITE" layoutX="551.0" layoutY="412.0" unFocusColor="WHITE">
       <font>
          <Font size="15.0" />
       </font>

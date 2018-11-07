@@ -1,19 +1,29 @@
 package sample;
 
+import Banco.Conexao;
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.*;
 
+import static javax.swing.JOptionPane.YES_OPTION;
 import static sample.App.gerarVetor;
 
 public class TestThread implements Initializable {
@@ -75,12 +85,63 @@ public class TestThread implements Initializable {
     private PieChart pieChart1;
 
     @FXML
+    private TableView<?> tableMain;
+
+    @FXML
+    private TableColumn<?, ?> tableDoc;
+
+    @FXML
+    private TableColumn<?, ?> tableNome;
+
+    @FXML
+    private TableColumn<?, ?> tableData;
+
+    @FXML
+    private TableColumn<?, ?> tableEmail;
+
+    @FXML
+    private TableColumn<?, ?> tableTelefone;
+
+    @FXML
+    private TableColumn<?, ?> tableSenha;
+
+    @FXML
+    private JFXButton btnLimpar;
+
+    Stage stage = null;
+
+    Conexao conexao = new Conexao();
+
+    @FXML
     void ButtonCancel(ActionEvent event) {
         if (th != null) {
             ts.stopThread();
             th.stop();
         } else {
             System.out.println("Inicie o processo antes!");
+        }
+    }
+
+    @FXML
+    void botaoLimpar(MouseEvent event) {
+        int opcao = JOptionPane.showConfirmDialog(null,
+                "Deseja realmente limpar os dados ?",
+                "Limpar Dados",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        if(opcao == YES_OPTION) {
+            /*l1.clear()//BubbleSort
+            l2.clear();//SelectionSort
+            l3.clear();//MergeSort
+            l4.clear();//QuickSort
+            l5.clear();//HeapSort
+            l6.clear();//InsertSort
+            l7.clear();//BogoSort
+            l8.clear();//ShellSort*/
+
+            //Name.clear(); variaveis que preciso limpar  < exemplo.
+        }else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
         }
     }
 
@@ -149,6 +210,18 @@ public class TestThread implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    @FXML
+    void close(MouseEvent event) {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void min(MouseEvent event) {
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 }
 

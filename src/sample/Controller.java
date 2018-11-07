@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -39,6 +40,10 @@ public class Controller implements Initializable {
 
     @FXML
     private JFXComboBox<Integer> cbx_Crianca;
+
+    @FXML
+    private JFXButton btnLogin;
+
     @FXML
     private JFXButton b_Reserva;
 
@@ -71,6 +76,16 @@ public class Controller implements Initializable {
     void close(MouseEvent event) {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void actionLogin(ActionEvent event) throws IOException {
+        FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("Login.fxml"));
+        Parent root = loaderLogin.load();
+        Scene home_sceneLogin = new Scene(root);
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app_stage.setScene(home_sceneLogin);
+        app_stage.show();
     }
 
     public void closeIcon(ActionEvent event) {
