@@ -41,13 +41,13 @@
                 <Label text="InsertionSort" textFill="WHITE" GridPane.rowIndex="5" />
                 <Label text="BogoSort" textFill="WHITE" GridPane.rowIndex="6" />
                 <Label text="ShellSort" textFill="WHITE" GridPane.rowIndex="7" />
-                <ProgressIndicator fx:id="pi1" prefHeight="45.0" prefWidth="286.0" GridPane.columnIndex="2" />
+                <ProgressIndicator fx:id="pi1" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" />
                 <ProgressIndicator fx:id="pi6" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                 <ProgressIndicator fx:id="pi7" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                 <ProgressIndicator fx:id="pi5" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                 <ProgressIndicator fx:id="pi4" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                <ProgressIndicator fx:id="pi3" prefHeight="39.0" prefWidth="73.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                <ProgressIndicator fx:id="pi2" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <ProgressIndicator fx:id="pi3" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <ProgressIndicator fx:id="pi2" prefHeight="10.0" prefWidth="89.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                 <ProgressIndicator fx:id="pi8" prefHeight="10.0" prefWidth="10.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                 <Label fx:id="l1" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" />
                 <Label fx:id="l2" text="Resultado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />

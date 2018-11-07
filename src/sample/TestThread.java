@@ -3,7 +3,8 @@ package sample;
 import Banco.Conexao;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static javax.swing.JOptionPane.YES_OPTION;
@@ -107,6 +109,7 @@ public class TestThread implements Initializable {
 
     @FXML
     private JFXButton btnLimpar;
+
 
     Stage stage = null;
 
@@ -224,6 +227,80 @@ public class TestThread implements Initializable {
         stage.setIconified(true);
     }
 }
+
+class Tabela{
+
+    /*@FXML
+    private TableColumn<?, ?> tableDoc;
+
+    @FXML
+    private TableColumn<?, ?> tableNome;
+
+    @FXML
+    private TableColumn<?, ?> tableData;
+
+    @FXML
+    private TableColumn<?, ?> tableEmail;
+
+    @FXML
+    private TableColumn<?, ?> tableTelefone;
+
+    @FXML
+    private TableColumn<?, ?> tableSenha;*/
+
+    private final SimpleIntegerProperty tableDoc;
+    private final SimpleStringProperty tableNome;
+    private final SimpleDateFormat tableData;
+    private final SimpleStringProperty tableEmail;
+    private final SimpleIntegerProperty tableTelefone;
+    private final SimpleStringProperty tableSenha;
+
+    Tabela(SimpleIntegerProperty tableDoc,SimpleStringProperty tableNome,SimpleDateFormat tableData,SimpleStringProperty tableEmail,SimpleIntegerProperty tableTelefone , SimpleStringProperty tableSenha) {
+        this.tableDoc = tableDoc;
+        this.tableNome = tableNome;
+        this.tableData = tableData;
+        this.tableEmail = tableEmail;
+        this.tableTelefone = tableTelefone;
+        this.tableSenha = tableSenha;
+    }
+
+    public int getDoc() {
+        return tableDoc.get();
+    }
+
+    public SimpleIntegerProperty docProperty() {
+        return tableDoc;
+    }
+
+    public void setDoc(int doc) {
+        this.tableDoc.set(doc);
+    }
+
+    public String getNome() {
+        return tableNome.get();
+    }
+
+    public SimpleStringProperty nomeProperty() {
+        return tableNome;
+    }
+
+    public void setNome(String nome) {
+        this.tableNome.set(nome);
+    }
+
+    public String getEmail() {
+        return tableEmail.get();
+    }
+
+    public SimpleStringProperty emailProperty() {
+        return tableEmail;
+    }
+
+    public void setEmail(String endereco) {
+        this.tableEmail.set(endereco);
+    }
+}
+
 
 class TestandoSort implements Runnable {
 
