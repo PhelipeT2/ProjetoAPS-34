@@ -2,30 +2,39 @@ package sample;
 
 import Banco.Conexao;
 import Model.ModelDependentes;
-import Model.ModelReserva;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+
 import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Dependentes implements Initializable {
     private ModelDependentes mDependentes;
-
+    @FXML
+    private GridPane GridPane,GP2;
+    @FXML
+    private ScrollPane contentScrollPane;
     public JFXTextField DepName, DepDoc, DepAge;
     public JFXTextField DepName2, DepDoc2, DepAge2;
-
     private Stage stage = null;
 
     public void close(MouseEvent event) {
@@ -149,6 +158,63 @@ public class Dependentes implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<Node> childrens = GridPane.getChildren();
+        GridPane.setGridLinesVisible(true);
+        ScrollPane sp = new ScrollPane(GridPane);
+        sp.setFitToWidth(true);
+        GP2.add(sp,0,1);
+        javafx.scene.layout.GridPane.setVgrow(sp,Priority.ALWAYS);
+
+        Label nomeCompleto = new Label("Nome Completa");
+        nomeCompleto.setStyle("-fx-text-fill: grey");
+        Label documento = new Label("Documento");
+        Label dataNascimento = new Label("Data Nascimento");
+        JFXTextField txt_nomeC = new JFXTextField();
+        txt_nomeC.setStyle("-jfx-focus-color: WHITE; -jfx-unfocus-color: WHITE; -fx-padding: 0px 5px 0px 5px; -fx-text-inner-color: #C0C0C0");
+        JFXTextField txt_doc = new JFXTextField();
+        txt_doc.setStyle("-jfx-focus-color: WHITE; -jfx-unfocus-color: WHITE; -fx-padding: 0px 5px 0px 5px; -fx-text-inner-color: #C0C0C0");
+        JFXTextField txt_dataN = new JFXTextField();
+        txt_dataN.setStyle("-jfx-focus-color: WHITE; -jfx-unfocus-color: WHITE; -fx-padding: 0px 5px 0px 5px; -fx-text-inner-color: #C0C0C0");
+            GridPane.add(nomeCompleto, 0 , 0);
+            GridPane.add(txt_nomeC, 1 , 0);
+            GridPane.add(documento, 0,1);
+            GridPane.add(txt_doc,  1,1);
+            GridPane.add(dataNascimento, 0 , 2);
+            GridPane.add(txt_dataN, 1, 2);
+            GridPane.addRow(3,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+
+            GridPane.addRow(4,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(5,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(6,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(7,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(8,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(9,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(10,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(11,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(12,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(13,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+            GridPane.addRow(14,new Label("Proximo Depedente"),new Label("Proximo Depedente"));
+        GridPane.getRowConstraints().add(3, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(4, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(5, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(6, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(7, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(8, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(9, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(10, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(11, new RowConstraints(30,50,50));
+        GridPane.getRowConstraints().add(12, new RowConstraints(30,50,50));
+
+        for(Node node: childrens){
+            System.out.println(node.getTypeSelector());
+            if(node.getTypeSelector().equals("Label")){
+                node.setStyle("-fx-font-size: 13pt; -fx-text-fill: WHITE");
+            }else if(node.getTypeSelector().equals("JFXTextField")){
+                node.setStyle("-jfx-focus-color: WHITE; -jfx-unfocus-color: WHITE; -fx-padding: 0px 5px 0px 5px; -fx-text-inner-color: #C0C0C0");
+            }
+        }
+            
+            
 
     }
 }

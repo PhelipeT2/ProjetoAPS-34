@@ -1,20 +1,25 @@
 package Model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class ModelCadastro {
+
     private String Name, Doc, Email;
-    private Date Age;
+    private LocalDate Age;
     private String Pwd;
     private int Tel;
 
-    ModelCadastro(String Name, String Doc, String Email, Date Age, int Tel, String Pwd){
+
+    public ModelCadastro(String Name, String Doc, String Email, LocalDate Age, int Tel, String Pwd){
         this.Name = Name;
         this.Doc = Doc;
         this.Email = Email;
         this.Age = Age;
         this.Tel = Tel;
         this.Pwd = Pwd;
+    }
+
+    public ModelCadastro() {
     }
 
     public String getName(){
@@ -26,10 +31,33 @@ public class ModelCadastro {
     public String getEmail(){
         return Email;
     }
-    public Date getAge(){return Age;}
+    public LocalDate getAge(){return Age;}
     public int getTel(){
         return Tel;
     }
     public String getPwd(){return Pwd;}
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public void setDoc(String doc) {
+        Doc = doc;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public void setAge(LocalDate age) {
+        Age = age;
+    }
+
+    public void setPwd(String pwd) {
+        Pwd = pwd;
+    }
+
+    public void setTel(int tel) {
+        Tel = tel;
+    }
 
 }

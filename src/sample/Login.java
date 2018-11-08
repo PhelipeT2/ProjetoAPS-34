@@ -2,8 +2,8 @@ package sample;
 
 import Banco.Conexao;
 import Model.ModelCadastro;
+import Model.ModelReserva;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
@@ -23,10 +23,13 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
 
+    private ModelReserva mReserva;
     @FXML
     private ResourceBundle resources;
 
@@ -69,8 +72,6 @@ public class Login implements Initializable {
     private ModelCadastro mLogin;
     Stage stage = null;
 
-    Conexao conexao = new Conexao();
-
     public void setModelCadastro(ModelCadastro value) {
         this.mLogin = value;
         textCpf.setText(value.getName());
@@ -78,18 +79,37 @@ public class Login implements Initializable {
     }
 
     @FXML
-    void acaoBotaoLogin(ActionEvent event) throws IOException {
+    void acaoBotaoLogin(ActionEvent event) {
+        try {
+            int id = 0;
+            ResultSet rs = null;
+            Statement statement = null;
+            Conexao conexao = new Conexao();
+            conexao.connect();
+            statement = conexao.createStatement();
+            // falta parte de conexão no banco.
+            if (!textCpf.getText().equals("") && !textSenha.getText().equals("")) {
 
-        if (textCpf.getText() != null && textSenha.getText() != null) {
-            FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("sample.fxml"));
-            Parent root = loaderLogin.load();
-            Scene home_sceneLogin = new Scene(root);
-            Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            app_stage.setScene(home_sceneLogin);
-            app_stage.show();
+                rs = statement.executeQuery("Select id_User,CPF,Senha from Usuario where CPF = '"+textCpf.getText()+"' and Senha = '"+textSenha.getText()+"'");
+                while(rs.next()){
+                    id = rs.getInt("id_User");
+                }
+                if (mReserva != null && id != 0) {
+                    if((mReserva.getQtdAdulto()+mReserva.getQtdCrianca()) > 1){
+                        System.out.println("entrei depedentes");
+                    }else{
+                        System.out.println("entrei Pagamento");
+                    }
+                }else{
+                    throw new Exception("Reserva nula ou id = 0");
+                }
 
-        } else {
-            System.out.println("Preencha os campos!");
+            } else {
+                throw new Exception("Preencha os campos!");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }
 
@@ -122,13 +142,18 @@ public class Login implements Initializable {
     @FXML
     void naoTemCadastro(MouseEvent event) throws IOException {
         System.out.println("Encaminhando para fazer o cadastro");
-        Parent parent = FXMLLoader.load(getClass().getResource("cadastro.fxml"));
-        Scene home_scene = new Scene(parent);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Cadastro.fxml"));
+        Parent root = loader.load();
+        Cadastro secondController = loader.getController();
+        secondController.setmReserva(this.mReserva); // metodo para passar valor.
+        Scene home_scene = new Scene(root);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.setScene(home_scene);
         app_stage.show();
     }
-
+    public void setmReserva(ModelReserva value){
+        this.mReserva = value;
+    }
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -156,6 +181,8 @@ public class Login implements Initializable {
         assert radioLembrar != null : "fx:id=\"radioLembrar\" was not injected: check your FXML file 'Login.fxml'.";
         assert imgAviao != null : "fx:id=\"imgAviao\" was not injected: check your FXML file 'Login.fxml'.";
         assert lblLogin != null : "fx:id=\"lblLogin\" was not injected: check your FXML file 'Login.fxml'.";
+
+
 
     }
 }
