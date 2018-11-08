@@ -1,9 +1,12 @@
 package sample;
 
 import Banco.Conexao;
+import Model.ModelRecibo;
+import Model.ModelReserva;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -14,9 +17,21 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Recibo implements Initializable{
+    private ModelRecibo mRecibo;
+    public Label l_Name, l_Doc, l_Email, l_Age, l_Tel,l_qtdAdulto, l_qtdCrianca, l_SomaQtd, l_SomaValor, l_bandeira, l_Parc, l_Origem, l_Destino, l_ida, l_posição;
+    Integer qtdDisponivel;
+
     Stage stage = null;
 
-    @FXML
+    public void setmRecibo(ModelRecibo value) {
+        this.mRecibo = value;
+
+        l_Origem.setText(value.getOrigem());
+        l_Destino.setText(value.getDestino());
+
+
+    }
+        @FXML
     void close(MouseEvent event) {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
