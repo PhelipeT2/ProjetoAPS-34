@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ModelRecibo {
 
-    private String nome, doc, data_nasc, tel, email, qtdAdulto, qtdCrianca, somaQtd, somaValor, bandeira, parc, origem, destino, ida, posicao;
+    private String nome, doc, age, tel, email, qtdAdulto, qtdCrianca, somaQtd, somaValor, bandeira, parc, origem, destino, ida, posicao;
 
     private List<Integer> listaAssentos;
     private ModelCadastro cadastro;
@@ -40,11 +40,11 @@ public class ModelRecibo {
 
 
 
-    public ModelRecibo(String nome, String doc, String data_nasc, String tel, String email, String qtdAdulto, String qtdCrianca,
+    public ModelRecibo(String nome, String doc, String age, String tel, String email, String qtdAdulto, String qtdCrianca,
                         String somaQtd, String somaValor, String bandeira, String parc, String origem, String destino, String ida, String posicao) {
         this.nome = nome;
         this.doc = doc;
-        this.data_nasc = data_nasc;
+        this.age = age;
         this.tel = tel;
         this.email = email;
         this.qtdAdulto = qtdAdulto;
@@ -62,7 +62,7 @@ public class ModelRecibo {
 
     public String getDoc() {return doc;}
 
-    public String getData_nasc() {return data_nasc;}
+    public String getAge() {return age;}
 
     public String getTel() {
         return tel;
