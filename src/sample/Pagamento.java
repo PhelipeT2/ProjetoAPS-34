@@ -21,6 +21,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,85 +31,99 @@ import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Pagamento implements Initializable {
     private ModelPagamento mPagamento;
-    public JFXComboBox <String> cbx_Parc, cbx_Band;
+    public JFXComboBox<String> cbx_Parc, cbx_Band;
     public JFXTextField NCard, Valid, Tit, Doc;
     public JFXPasswordField pass;
+    Conexao conexao;
 
     public void setmReserva(ModelReserva mReserva) {
-        this.mReserva = mReserva;
-        int i =1;
-        int idVoo = 0;
-        int idAssentoCliente = 0;
-        int idDepedente = 0;
-        int idCliente = 0;
-        boolean existe = false;
-        String docDepe = null;
-        List<Integer> assentos = new ArrayList<>();
-        Conexao conexao = new Conexao();
-        ResultSet rs = null;
-        Statement statement = null;
-        conexao.connect();
-        statement = conexao.createStatement();
-        if(mReserva.getDependentes() != null){
-            try {
+        try {
+            this.mReserva = mReserva;
+            int i = 1;
+            int idVoo = 0;
+            int idAssentoCliente = 0;
+            int idDepedente = 0;
+            int idCliente = 0;
+            boolean existe = false;
+            String docDepe = null;
+            List<Integer> assentos = new ArrayList<>();
+            conexao = new Conexao();
+
+            ResultSet rs = null;
+            Statement statement = null;
+            conexao.connect();
+            statement = conexao.createStatement();
+            conexao.getConexao().setAutoCommit(false);
+            if (mReserva.getDependentes() != null) {
+
                 // A data está indo errado nessa parte.
                 //Insert Voo
-                rs=statement.executeQuery("select * from voo where id_POrigem = (select id from paises where nome='"+mReserva.getOrigem()+"') and id_PDestino = (select id from paises where nome='"+mReserva.getDestino()+"') and DataPartida= '"+mReserva.getIda()+"'");
+                rs = statement.executeQuery("select * from voo where id_POrigem = (select id from paises where nome='" + mReserva.getOrigem() + "') and id_PDestino = (select id from paises where nome='" + mReserva.getDestino() + "') and DataPartida= '" + mReserva.getIda() + "'");
                 while (rs.next()) {
                     existe = true;
                     idVoo = rs.getInt("id");
                 }
-                if(!existe){
-                    statement.executeUpdate("insert into Voo(id_aviao,id_POrigem,id_PDestino,DataPartida) values('1',(select id from paises where nome='"+mReserva.getOrigem()+"'),(select id from paises where nome='"+mReserva.getDestino()+"'),"+mReserva.getIda()+")");
-                    rs=statement.executeQuery("select * from voo where id_POrigem = (select id from paises where nome='"+mReserva.getOrigem()+"') and id_PDestino = (select id from paises where nome='"+mReserva.getDestino()+"') and DataPartida= '"+mReserva.getIda()+"'");
+                if (!existe) {
+                    statement.executeUpdate("insert into Voo(id_aviao,id_POrigem,id_PDestino,DataPartida) values('1',(select id from paises where nome='" + mReserva.getOrigem() + "'),(select id from paises where nome='" + mReserva.getDestino() + "'),'" + mReserva.getIda() + "')");
+                    rs = statement.executeQuery("select * from voo where id_POrigem = (select id from paises where nome='" + mReserva.getOrigem() + "') and id_PDestino = (select id from paises where nome='" + mReserva.getDestino() + "') and DataPartida= '" + mReserva.getIda() + "'");
                     while (rs.next()) {
                         idVoo = rs.getInt("id");
                     }
                 }
-                for(Integer item: mReserva.getListaAssentos()){
-                    statement.executeUpdate("insert into Assento(id_Voo,num_Assento) values('"+idVoo+"','"+item+"')");
-                    rs = statement.executeQuery("select id from Assento where id_Voo = '"+idVoo+"' and num_Assento = '"+item+"'");
-                    while (rs.next()){
-                        if(i == 1){
+                for (Integer item : mReserva.getListaAssentos()) {
+                    statement.executeUpdate("insert into Assento(id_Voo,num_Assento) values('" + idVoo + "','" + item + "')");
+                    rs = statement.executeQuery("select id from Assento where id_Voo = '" + idVoo + "' and num_Assento = '" + item + "'");
+                    while (rs.next()) {
+                        if (i == 1) {
                             idAssentoCliente = rs.getInt("id");
                             i++;
-                        }else{
+                        } else {
                             assentos.add(rs.getInt("id"));
                         }
                     }
                 }
                 i = 1;
-                int j =0;
-                for(ModelDependentes item: mReserva.getDependentes()) {
+                int j = 0;
+                int id_Max = 0;
+                rs = statement.executeQuery("select MAX(ID) from depedente");
+                while (rs.next()) {
+                    id_Max = rs.getInt("MAX(ID)");
+                }
+                id_Max++;
+                for (ModelDependentes item : mReserva.getDependentes()) {
                     //Insert Depedentes
-                    statement.executeUpdate("insert into Depedente(sequencia,id_Assento,RG,Nome,DataNascimento) values('"+i+"','"+assentos.get(j++)+"','"+item.getDepDoc()+"','"+item.getDepName()+"','"+item.getDepAge()+"')");
+                    statement.executeUpdate("insert into Depedente(id,sequencia,id_Assento,RG,Nome,DataNascimento) values('" + id_Max + "','" + i + "','" + assentos.get(j++) + "','" + item.getDepDoc() + "','" + item.getDepName() + "','" + item.getDepAge() + "')");
                     i++;
                     docDepe = item.getDepDoc();
                 }
                 //select id depedentes
-                rs = statement.executeQuery("select id from depedente where RG = '"+docDepe+"'");
-                while (rs.next()){
+                rs = statement.executeQuery("select id from depedente where RG = '" + docDepe + "'");
+                while (rs.next()) {
                     idDepedente = rs.getInt("id");
                 }
 
-                rs = statement.executeQuery("Select id from Pessoa where CPF = '"+mReserva.getCPF()+"'");
+                rs = statement.executeQuery("Select id from Pessoa where CPF = '" + mReserva.getCPF() + "'");
                 while (rs.next())
                     idCliente = rs.getInt("id");
                 //Insert Carrinho
-                if(idDepedente == 0)
-                statement.executeUpdate("insert into Carrinho(id_cliente,id_voo,id_depedente,id_assento) values('"+idCliente+"','"+idVoo+"','null','"+idAssentoCliente+"')");
-                else{
-                    statement.executeUpdate("insert into Carrinho(id_cliente,id_voo,id_depedente,id_assento) values('"+idCliente+"','"+idVoo+"','"+idDepedente+"','"+idAssentoCliente+"')");
+                if (idDepedente == 0)
+                    statement.executeUpdate("insert into Carrinho(id_cliente,id_voo,id_depedente,id_assento) values('" + idCliente + "','" + idVoo + "','null','" + idAssentoCliente + "')");
+                else {
+                    statement.executeUpdate("insert into Carrinho(id_cliente,id_voo,id_depedente,id_assento) values('" + idCliente + "','" + idVoo + "','" + idDepedente + "','" + idAssentoCliente + "')");
                 }
+                conexao.getConexao().commit();
                 statement.close();
-                } catch (Exception e) {
-                System.out.println(e.getMessage());
-                }
-
-        }else{
-
+            } else {
+                // sem depedente.
+            }
+        } catch (Exception e) {
+            try {
+                conexao.getConexao().rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            System.out.println(e.getMessage());
         }
-
     }
 
     private ModelReserva mReserva;
@@ -126,7 +141,7 @@ public class Pagamento implements Initializable {
 
     @FXML
     void close(MouseEvent event) {
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
@@ -137,27 +152,27 @@ public class Pagamento implements Initializable {
 
         NCard.getValidators().add(validator);
         NCard.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 NCard.validate();
         });
         Valid.getValidators().add(validator);
         Valid.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 Valid.validate();
         });
         Doc.getValidators().add(validator);
         Doc.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 Doc.validate();
         });
         Tit.getValidators().add(validator);
         Tit.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 Tit.validate();
         });
         pass.getValidators().add(validator);
         pass.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue)
+            if (!newValue)
                 pass.validate();
         });
 
@@ -193,13 +208,13 @@ public class Pagamento implements Initializable {
     }
 
     public void min(MouseEvent event) {
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
     void next(MouseEvent event) throws Exception {
-        if(NCard.getText() != null && Valid.getText() != null && Doc.getText() != null && Tit.getText() != null
+        if (NCard.getText() != null && Valid.getText() != null && Doc.getText() != null && Tit.getText() != null
                 && pass.getText() != null && cbx_Parc.getSelectionModel().getSelectedItem() != null
                 || cbx_Band.getSelectionModel().getSelectedItem() != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Recibo.fxml"));
@@ -208,7 +223,7 @@ public class Pagamento implements Initializable {
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.setScene(home_scene);
             app_stage.show();
-            }else{
+        } else {
             System.out.println("Preencha os campos!");
         }
     }
@@ -220,13 +235,13 @@ public class Pagamento implements Initializable {
                 "Limpar Dados",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-        if(opcao == YES_OPTION) {
+        if (opcao == YES_OPTION) {
             NCard.clear();
             Valid.clear();
             Doc.clear();
             Tit.clear();
             pass.clear();
-        }else{
+        } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Pagamento.fxml"));
         }
     }

@@ -189,6 +189,8 @@ public class Login implements Initializable {
                 textSenha.validate();
         });
 
+        textCpf.setText("12312312342");
+        textSenha.setText("asdas");
         assert botaoLogin != null : "fx:id=\"botaoLogin\" was not injected: check your FXML file 'Login.fxml'.";
         assert textCpf != null : "fx:id=\"textCpf\" was not injected: check your FXML file 'Login.fxml'.";
         assert lblCPF != null : "fx:id=\"lblCPF\" was not injected: check your FXML file 'Login.fxml'.";
