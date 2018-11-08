@@ -214,26 +214,26 @@ public class Pagamento implements Initializable {
                 pass.validate();
         });
 
-//        try {
-//            Conexao conexao = new Conexao();
-//            ResultSet rs = null;
-//            Statement statement = null;
-//            conexao.connect();
-//
-//            statement = conexao.createStatement();
-//            rs = statement.executeQuery("Select Tipo_Parcelamento from Parcelamento");
-//            while(rs.next()){
-//                cbx_Parc.getItems().add(rs.getString("Tipo_Parcelamento"));
-//            }
-//            statement = conexao.createStatement();
-//            rs = statement.executeQuery("Select Tipo_Bandeira from Bandeira");
-//            while(rs.next()){
-//                cbx_Band.getItems().add(rs.getString("Tipo_Bandeira"));
-//            }
-//            statement.close();
-//        }catch (Exception e){
-//            JOptionPane.showMessageDialog(null,e.getMessage());
-//        }
+        try {
+            Conexao conexao = new Conexao();
+            ResultSet rs = null;
+            Statement statement = null;
+            conexao.connect();
+
+            statement = conexao.createStatement();
+            rs = statement.executeQuery("Select qt_Parcelamento from Parcelamento");
+            while(rs.next()){
+                cbx_Parc.getItems().add(rs.getString("qt_Parcelamento"));
+            }
+            statement = conexao.createStatement();
+            rs = statement.executeQuery("Select Tipo_Bandeira from Bandeira");
+            while(rs.next()){
+                cbx_Band.getItems().add(rs.getString("Tipo_Bandeira"));
+            }
+            statement.close();
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
     }
 
     public void prev(MouseEvent mouseEvent) throws IOException {
