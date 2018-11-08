@@ -180,11 +180,11 @@ public class TestThread implements Initializable {
 
         assert tabelaCliente != null : "fx:id=\"tableview\" was not injected: check your FXML file 'UserMaster.fxml'.";
         colCpf.setCellValueFactory(
-                new PropertyValueFactory<TabelaCliente, String>("CPF"));
+                new PropertyValueFactory<TabelaCliente, String>("clienteCpf"));
         colNome.setCellValueFactory(
-                new PropertyValueFactory<TabelaCliente, String>("Nome"));
+                new PropertyValueFactory<TabelaCliente, String>("clienteNome"));
         colTelefone.setCellValueFactory(
-                new PropertyValueFactory<TabelaCliente, String>("Telefone"));
+                new PropertyValueFactory<TabelaCliente, String>("clienteTelefone"));
     }
 
     private ObservableList<TabelaCliente> data;
@@ -205,12 +205,7 @@ public class TestThread implements Initializable {
             //Conexao con = null;
             //ResultSet rs = con.createStatement().executeQuery(SQL);
             while (rs.next()) {
-                TabelaCliente cm = new TabelaCliente();
-
-                cm.clienteCpf.set(rs.getInt("CPF"));
-                cm.clienteNome.set(rs.getString("Nome"));
-                cm.clienteTelefone.set(rs.getLong("Telefone"));
-                data.add(cm);
+                data.add(new TabelaCliente(rs.getLong("CPF"),rs.getString("Nome"),rs.getLong("Telefone")));
             }
             tabelaCliente.setItems(data);
         } catch (Exception e) {

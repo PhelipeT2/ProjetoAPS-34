@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Parent root = FXMLLoader.load(getClass().getResource("cadastro.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("TestThread.fxml"));
         primaryStage.setTitle("Indians Airlines");
 //        Parent root2 = FXMLLoader.load(getClass().getResource("Lugares.fxml"));
 //        primaryStage.setTitle("Indias Airlines");
