@@ -3,8 +3,6 @@ package sample;
 import Banco.Conexao;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,15 +12,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.net.URL;
-import java.text.SimpleDateFormat;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.*;
 
 import static javax.swing.JOptionPane.YES_OPTION;
@@ -34,30 +33,6 @@ public class TestThread implements Initializable {
     List<Sort> listSort;
     Thread th;
     TestandoSort ts;
-
-    @FXML
-    private ProgressIndicator pi1;
-
-    @FXML
-    private ProgressIndicator pi6;
-
-    @FXML
-    private ProgressIndicator pi7;
-
-    @FXML
-    private ProgressIndicator pi5;
-
-    @FXML
-    private ProgressIndicator pi4;
-
-    @FXML
-    private ProgressIndicator pi3;
-
-    @FXML
-    private ProgressIndicator pi2;
-
-    @FXML
-    private ProgressIndicator pi8;
 
     @FXML
     private Label l1;//BubbleSort
@@ -87,29 +62,19 @@ public class TestThread implements Initializable {
     private PieChart pieChart1;
 
     @FXML
-    private TableView<?> tableMain;
-
-    @FXML
-    private TableColumn<?, ?> tableDoc;
-
-    @FXML
-    private TableColumn<?, ?> tableNome;
-
-    @FXML
-    private TableColumn<?, ?> tableData;
-
-    @FXML
-    private TableColumn<?, ?> tableEmail;
-
-    @FXML
-    private TableColumn<?, ?> tableTelefone;
-
-    @FXML
-    private TableColumn<?, ?> tableSenha;
-
-    @FXML
     private JFXButton btnLimpar;
 
+    @FXML
+    private TableView<TabelaCliente> tabelaCliente;
+
+    @FXML
+    private TableColumn<TabelaCliente, String> colCpf;
+
+    @FXML
+    private TableColumn<TabelaCliente, String> colNome;
+
+    @FXML
+    private TableColumn<TabelaCliente, String> colTelefone;
 
     Stage stage = null;
 
@@ -132,7 +97,7 @@ public class TestThread implements Initializable {
                 "Limpar Dados",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
-        if(opcao == YES_OPTION) {
+        if (opcao == YES_OPTION) {
             /*l1.clear()//BubbleSort
             l2.clear();//SelectionSort
             l3.clear();//MergeSort
@@ -143,7 +108,7 @@ public class TestThread implements Initializable {
             l8.clear();//ShellSort*/
 
             //Name.clear(); variaveis que preciso limpar  < exemplo.
-        }else{
+        } else {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("cadastro.fxml"));
         }
     }
@@ -204,7 +169,7 @@ public class TestThread implements Initializable {
         listThread.add(mergeSortT);
         listThread.add(quickSortT);
 
-        ts = new TestandoSort(vetor, listThread, listSort, pi1, pi6, pi7, pi5, pi4, pi3, pi2, pi8, l1, l2, l3, l4, l5, l6, l7, l8, pieChart1);
+        ts = new TestandoSort(vetor, listThread, listSort, l1, l2, l3, l4, l5, l6, l7, l8, pieChart1);
         th = new Thread(ts);
         th.setDaemon(true);
         th.start();
@@ -213,6 +178,53 @@ public class TestThread implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        assert tabelaCliente != null : "fx:id=\"tableview\" was not injected: check your FXML file 'UserMaster.fxml'.";
+        colCpf.setCellValueFactory(
+                new PropertyValueFactory<TabelaCliente, String>("CPF"));
+        colNome.setCellValueFactory(
+                new PropertyValueFactory<TabelaCliente, String>("Nome"));
+        colTelefone.setCellValueFactory(
+                new PropertyValueFactory<TabelaCliente, String>("Telefone"));
+    }
+
+    private ObservableList<TabelaCliente> data;
+
+    @FXML
+    void acaoBuscar(ActionEvent event) {
+        data = FXCollections.observableArrayList();
+        try {
+            Conexao conexao = new Conexao();
+            ResultSet rs = null;
+            Statement statement = null;
+            conexao.connect();
+            statement = conexao.createStatement();
+            rs = statement.executeQuery("SELECT CPF, Nome ,telefone FROM Pessoa");
+
+            /////
+            //String SQL = "Select * from usermaster Order By UserName";
+            //Conexao con = null;
+            //ResultSet rs = con.createStatement().executeQuery(SQL);
+            while (rs.next()) {
+                TabelaCliente cm = new TabelaCliente();
+
+                cm.clienteCpf.set(rs.getInt("CPF"));
+                cm.clienteNome.set(rs.getString("Nome"));
+                cm.clienteTelefone.set(rs.getLong("Telefone"));
+                data.add(cm);
+            }
+            tabelaCliente.setItems(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error on Building Data");
+        }
+    }
+
+//    public ObjectProperty<EventHandler<SortEvent<TableView<TabelaCliente>>>> onSortProperty(){
+//        return sortingAlgorithm.QuickSort;
+//    }
+
+    @FXML
+    void acaoLimpar(ActionEvent event) {
     }
 
     @FXML
@@ -226,81 +238,8 @@ public class TestThread implements Initializable {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
+
 }
-
-class Tabela{
-
-    /*@FXML
-    private TableColumn<?, ?> tableDoc;
-
-    @FXML
-    private TableColumn<?, ?> tableNome;
-
-    @FXML
-    private TableColumn<?, ?> tableData;
-
-    @FXML
-    private TableColumn<?, ?> tableEmail;
-
-    @FXML
-    private TableColumn<?, ?> tableTelefone;
-
-    @FXML
-    private TableColumn<?, ?> tableSenha;*/
-
-    private final SimpleIntegerProperty tableDoc;
-    private final SimpleStringProperty tableNome;
-    private final SimpleDateFormat tableData;
-    private final SimpleStringProperty tableEmail;
-    private final SimpleIntegerProperty tableTelefone;
-    private final SimpleStringProperty tableSenha;
-
-    Tabela(SimpleIntegerProperty tableDoc,SimpleStringProperty tableNome,SimpleDateFormat tableData,SimpleStringProperty tableEmail,SimpleIntegerProperty tableTelefone , SimpleStringProperty tableSenha) {
-        this.tableDoc = tableDoc;
-        this.tableNome = tableNome;
-        this.tableData = tableData;
-        this.tableEmail = tableEmail;
-        this.tableTelefone = tableTelefone;
-        this.tableSenha = tableSenha;
-    }
-
-    public int getDoc() {
-        return tableDoc.get();
-    }
-
-    public SimpleIntegerProperty docProperty() {
-        return tableDoc;
-    }
-
-    public void setDoc(int doc) {
-        this.tableDoc.set(doc);
-    }
-
-    public String getNome() {
-        return tableNome.get();
-    }
-
-    public SimpleStringProperty nomeProperty() {
-        return tableNome;
-    }
-
-    public void setNome(String nome) {
-        this.tableNome.set(nome);
-    }
-
-    public String getEmail() {
-        return tableEmail.get();
-    }
-
-    public SimpleStringProperty emailProperty() {
-        return tableEmail;
-    }
-
-    public void setEmail(String endereco) {
-        this.tableEmail.set(endereco);
-    }
-}
-
 
 class TestandoSort implements Runnable {
 
@@ -310,14 +249,16 @@ class TestandoSort implements Runnable {
     List<Thread> listThread;
     List<Sort> listSort;
 
-    private ProgressIndicator pi1;
-    private ProgressIndicator pi6;
-    private ProgressIndicator pi7;
-    private ProgressIndicator pi5;
-    private ProgressIndicator pi4;
-    private ProgressIndicator pi3;
-    private ProgressIndicator pi2;
-    private ProgressIndicator pi8;
+
+//private ProgressIndicator pi1;
+//private ProgressIndicator pi6;
+//private ProgressIndicator pi7;
+//private ProgressIndicator pi5;
+//private ProgressIndicator pi4;
+//private ProgressIndicator pi3;
+//private ProgressIndicator pi2;
+//private ProgressIndicator pi8;
+
     private PieChart pieChart1;
 
     private Label l1;//BubbleSort
@@ -337,18 +278,18 @@ class TestandoSort implements Runnable {
             }
     }
 
-    public TestandoSort(int[] vetor, List<Thread> listThread, List<Sort> listSort, ProgressIndicator pi1, ProgressIndicator pi6, ProgressIndicator pi7, ProgressIndicator pi5, ProgressIndicator pi4, ProgressIndicator pi3, ProgressIndicator pi2, ProgressIndicator pi8, Label l1, Label l2, Label l3, Label l4, Label l5, Label l6, Label l7, Label l8, PieChart pieChart1) {
+    public TestandoSort(int[] vetor, List<Thread> listThread, List<Sort> listSort, Label l1, Label l2, Label l3, Label l4, Label l5, Label l6, Label l7, Label l8, PieChart pieChart1) {
         this.vetor = vetor;
         this.listThread = listThread;
         this.listSort = listSort;
-        this.pi1 = pi1;
-        this.pi6 = pi6;
-        this.pi7 = pi7;
-        this.pi5 = pi5;
-        this.pi4 = pi4;
-        this.pi3 = pi3;
-        this.pi2 = pi2;
-        this.pi8 = pi8;
+//        this.pi1 = pi1;
+//        this.pi6 = pi6;
+//        this.pi7 = pi7;
+//        this.pi5 = pi5;
+//        this.pi4 = pi4;
+//        this.pi3 = pi3;
+//        this.pi2 = pi2;
+//        this.pi8 = pi8;
         this.l1 = l1;
         this.l2 = l2;
         this.l3 = l3;
@@ -381,7 +322,7 @@ class TestandoSort implements Runnable {
                                 case "shellSort":
                                     Platform.runLater(() -> {
                                         l8.setText(Objects.toString(sort.getTempo(), null));
-                                        pi8.setVisible(false);
+                                        //pi8.setVisible(false);
                                         list.add(new PieChart.Data("shellSort", sort.getTempo()));
 
                                     });
@@ -389,7 +330,7 @@ class TestandoSort implements Runnable {
                                 case "bogoSort":
                                     Platform.runLater(() -> {
                                         l7.setText(Objects.toString(sort.getTempo(), null));
-                                        pi7.setVisible(false);
+                                        //pi7.setVisible(false);
                                         list.add(new PieChart.Data("bogoSort", sort.getTempo()));
 
                                     });
@@ -397,7 +338,7 @@ class TestandoSort implements Runnable {
                                 case "insertionSort":
                                     Platform.runLater(() -> {
                                         l6.setText(Objects.toString(sort.getTempo(), null));
-                                        pi6.setVisible(false);
+                                        //pi6.setVisible(false);
                                         list.add(new PieChart.Data("insertionSort", sort.getTempo()));
 
                                     });
@@ -405,7 +346,7 @@ class TestandoSort implements Runnable {
                                 case "heapSort":
                                     Platform.runLater(() -> {
                                         l5.setText(Objects.toString(sort.getTempo(), null));
-                                        pi5.setVisible(false);
+                                        //pi5.setVisible(false);
                                         list.add(new PieChart.Data("heapSort", sort.getTempo()));
 
                                     });
@@ -413,7 +354,7 @@ class TestandoSort implements Runnable {
                                 case "bubbleSort":
                                     Platform.runLater(() -> {
                                         l1.setText(Objects.toString(sort.getTempo(), null));
-                                        pi1.setVisible(false);
+                                        //pi1.setVisible(false);
                                         list.add(new PieChart.Data("bubbleSort", sort.getTempo()));
 
                                     });
@@ -421,7 +362,7 @@ class TestandoSort implements Runnable {
                                 case "selectionSort":
                                     Platform.runLater(() -> {
                                         l2.setText(Objects.toString(sort.getTempo(), null));
-                                        pi2.setVisible(false);
+                                        //pi2.setVisible(false);
                                         list.add(new PieChart.Data("selectionSort", sort.getTempo()));
 
                                     });
@@ -429,7 +370,7 @@ class TestandoSort implements Runnable {
                                 case "mergeSort":
                                     Platform.runLater(() -> {
                                         l3.setText(Objects.toString(sort.getTempo(), null));
-                                        pi3.setVisible(false);
+                                        //pi3.setVisible(false);
                                         list.add(new PieChart.Data("mergeSort", sort.getTempo()));
 
                                     });
@@ -437,7 +378,7 @@ class TestandoSort implements Runnable {
                                 case "quickSort":
                                     Platform.runLater(() -> {
                                         l4.setText(Objects.toString(sort.getTempo(), null));
-                                        pi4.setVisible(false);
+                                        //pi4.setVisible(false);
                                         list.add(new PieChart.Data("quickSort", sort.getTempo()));
                                     });
                                     break;
