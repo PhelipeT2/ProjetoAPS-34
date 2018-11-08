@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #57606F;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Pagamento">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #57606F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Pagamento">
    <AnchorPane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #353238;">
       <Label layoutX="27.0" layoutY="7.0" prefHeight="35.0" prefWidth="205.0" text="Indians Airlines" textFill="WHITE">
          <font>
@@ -22,14 +22,16 @@
       <FontAwesomeIconView fx:id="min" fill="#48dbdb" glyphName="MINUS" layoutX="732.0" layoutY="33.0" onMouseClicked="#min" size="24" style="-fx-cursor: hand;" wrappingWidth="32.0" />
    </AnchorPane>
    <VBox layoutX="14.0" layoutY="62.0" prefHeight="55.0" prefWidth="57.0">
-      <JFXButton fx:id="prev" onMouseClicked="#prev" prefHeight="55.0" prefWidth="57.0" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="  " textFill="WHITE">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <graphic>
-            <FontAwesomeIconView fill="WHITE" glyphName="MAIL_REPLY" size="32" text="" translateX="5.0" wrappingWidth="32.0" />
-         </graphic>
-      </JFXButton>
+      <children>
+         <JFXButton fx:id="prev" accessibleText="Voltar" onMouseClicked="#prev" prefHeight="50.0" prefWidth="43.0" style="-fx-background-color: #63a2d0; -fx-cursor: hand; -fx-background-radius: 20;" text="  " textFill="WHITE">
+            <padding>
+               <Insets bottom="15.0" left="-5.0" right="10.0" />
+            </padding>
+            <graphic>
+               <FontAwesomeIconView fx:id="prevDep2" fill="WHITE" glyphName="MAIL_REPLY" onMouseClicked="#prev" size="30" style="-fx-cursor: hand;" translateX="13.0" translateY="8.0" wrappingWidth="36.000000953674316" />
+            </graphic>
+         </JFXButton>
+      </children>
    </VBox>
    <Label layoutX="249.0" layoutY="348.0" text="Escolha sua forma de pagamento" textFill="WHITE">
       <font>
@@ -67,26 +69,26 @@
       </font>
    </Label>
    <JFXPasswordField fx:id="pass" focusColor="WHITE" layoutX="355.0" layoutY="465.0" unFocusColor="WHITE" />
-   <JFXButton fx:id="next" layoutX="423.0" layoutY="531.0" onMouseClicked="#next" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="Validar Pagamento" textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-   </JFXButton>
    <Label layoutX="313.0" layoutY="290.0" text="CPF:" textFill="WHITE">
       <font>
          <Font size="15.0" />
       </font>
    </Label>
    <JFXTextField fx:id="Doc" focusColor="WHITE" layoutX="348.0" layoutY="288.0" prefHeight="25.0" prefWidth="148.0" unFocusColor="WHITE" />
-   <JFXButton fx:id="clear" layoutX="244.0" layoutY="531.0" onMouseClicked="#clear" style="-fx-background-color: #18c67f; -fx-cursor: hand;" text="Limpar Dados" textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-   </JFXButton>
    <JFXComboBox fx:id="cbx_Band" focusColor="WHITE" layoutX="366.0" layoutY="151.0" prefHeight="25.0" prefWidth="126.0" unFocusColor="WHITE" />
    <Label layoutX="297.0" layoutY="153.0" text="Bandeira:" textFill="WHITE">
       <font>
          <Font size="15.0" />
       </font>
    </Label>
+   <JFXButton fx:id="clear" layoutX="258.0" layoutY="531.0" onMouseClicked="#clear" style="-fx-background-color: #63a2d0; -fx-cursor: hand; -fx-background-radius: 20;" text="Limpar Dados" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </JFXButton>
+   <JFXButton fx:id="next" contentDisplay="RIGHT" layoutX="403.0" layoutY="531.0" onMouseClicked="#next" style="-fx-background-color: #63a2d0; -fx-cursor: hand; -fx-background-radius: 20;" text="Salvar Dados e Avançar" textAlignment="CENTER" textFill="#f8f7f7">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </JFXButton>
 </AnchorPane>

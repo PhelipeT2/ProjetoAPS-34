@@ -3,26 +3,22 @@ package Model;
 import java.sql.Date;
 
 public class ModelCadastro {
-    private String Name, SName, Doc, Email;
+    private String Name, Doc, Email;
     private Date Age;
-    private String senha;
+    private String Pwd;
     private int Tel;
 
-    ModelCadastro(String Name, String SName, String Doc, String Email, Date Age, int Tel, String senha){
+    ModelCadastro(String Name, String Doc, String Email, Date Age, int Tel, String Pwd){
         this.Name = Name;
-        this.SName = SName;
         this.Doc = Doc;
         this.Email = Email;
         this.Age = Age;
         this.Tel = Tel;
-        this.senha = senha;
+        this.Pwd = Pwd;
     }
 
     public String getName(){
         return Name;
-    }
-    public String getSName(){
-        return SName;
     }
     public String getDoc(){
         return Doc;
@@ -34,5 +30,6 @@ public class ModelCadastro {
     public int getTel(){
         return Tel;
     }
-    public String getSenha(){return senha;}
+    public String getPwd(){return Pwd;}
+
 }
