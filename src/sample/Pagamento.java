@@ -82,25 +82,63 @@ public class Pagamento implements Initializable {
                         }
                     }
                 }
+                rs = statement.executeQuery("Select id from Pessoa where CPF = '" + mReserva.getCPF() + "'");
+                while (rs.next())
+                    idCliente = rs.getInt("id");
+                //Insert Carrinho
+                if (idDepedente == 0)
+                    statement.executeUpdate("insert into Carrinho(id_cliente,id_voo,id_depedente,id_assento) values('" + idCliente + "','" + idVoo + "','null','" + idAssentoCliente + "')");
+                else {
+                    statement.executeUpdate("insert into Carrinho(id_cliente,id_voo,id_depedente,id_assento) values('" + idCliente + "','" + idVoo + "','" + idDepedente + "','" + idAssentoCliente + "')");
+                }
+                conexao.getConexao().commit();
+                statement.close();
+                System.out.println("Cadastro feito com sucesso - Depedentes!");
+            } else {
+                // sem depedente.
+                rs = statement.executeQuery("select * from voo where id_POrigem = (select id from paises where nome='" + mReserva.getOrigem() + "') and id_PDestino = (select id from paises where nome='" + mReserva.getDestino() + "') and DataPartida= '" + mReserva.getIda() + "'");
+                while (rs.next()) {
+                    existe = true;
+                    idVoo = rs.getInt("id");
+                }
+                if (!existe) {
+                    statement.executeUpdate("insert into Voo(id_aviao,id_POrigem,id_PDestino,DataPartida) values('1',(select id from paises where nome='" + mReserva.getOrigem() + "'),(select id from paises where nome='" + mReserva.getDestino() + "'),'" + mReserva.getIda() + "')");
+                    rs = statement.executeQuery("select * from voo where id_POrigem = (select id from paises where nome='" + mReserva.getOrigem() + "') and id_PDestino = (select id from paises where nome='" + mReserva.getDestino() + "') and DataPartida= '" + mReserva.getIda() + "'");
+                    while (rs.next()) {
+                        idVoo = rs.getInt("id");
+                    }
+                }
+                for (Integer item : mReserva.getListaAssentos()) {
+                    statement.executeUpdate("insert into Assento(id_Voo,num_Assento) values('" + idVoo + "','" + item + "')");
+                    rs = statement.executeQuery("select id from Assento where id_Voo = '" + idVoo + "' and num_Assento = '" + item + "'");
+                    while (rs.next()) {
+                        if (i == 1) {
+                            idAssentoCliente = rs.getInt("id");
+                            i++;
+                        } else {
+                            assentos.add(rs.getInt("id"));
+                        }
+                    }
+                }
                 i = 1;
                 int j = 0;
                 int id_Max = 0;
-                rs = statement.executeQuery("select MAX(ID) from depedente");
-                while (rs.next()) {
-                    id_Max = rs.getInt("MAX(ID)");
-                }
-                id_Max++;
-                for (ModelDependentes item : mReserva.getDependentes()) {
-                    //Insert Depedentes
-                    statement.executeUpdate("insert into Depedente(id,sequencia,id_Assento,RG,Nome,DataNascimento) values('" + id_Max + "','" + i + "','" + assentos.get(j++) + "','" + item.getDepDoc() + "','" + item.getDepName() + "','" + item.getDepAge() + "')");
-                    i++;
-                    docDepe = item.getDepDoc();
-                }
-                //select id depedentes
-                rs = statement.executeQuery("select id from depedente where RG = '" + docDepe + "'");
-                while (rs.next()) {
-                    idDepedente = rs.getInt("id");
-                }
+//                rs = statement.executeQuery("select MAX(ID) from depedente");
+//                while (rs.next()) {
+//                    id_Max = rs.getInt("MAX(ID)");
+//                }
+//                id_Max++;
+//                for (ModelDependentes item : mReserva.getDependentes()) {
+//                    //Insert Depedentes
+//                    statement.executeUpdate("insert into Depedente(id,sequencia,id_Assento,RG,Nome,DataNascimento) values('" + id_Max + "','" + i + "','" + assentos.get(j++) + "','" + item.getDepDoc() + "','" + item.getDepName() + "','" + item.getDepAge() + "')");
+//                    i++;
+//                    docDepe = item.getDepDoc();
+//                }
+//                //select id depedentes
+//                rs = statement.executeQuery("select id from depedente where RG = '" + docDepe + "'");
+//                while (rs.next()) {
+//                    idDepedente = rs.getInt("id");
+//                }
 
                 rs = statement.executeQuery("Select id from Pessoa where CPF = '" + mReserva.getCPF() + "'");
                 while (rs.next())
@@ -113,8 +151,8 @@ public class Pagamento implements Initializable {
                 }
                 conexao.getConexao().commit();
                 statement.close();
-            } else {
-                // sem depedente.
+                System.out.println("Cadastro feito com sucesso - Sem Depedentes!");
+
             }
         } catch (Exception e) {
             try {
