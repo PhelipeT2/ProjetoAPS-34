@@ -9,6 +9,16 @@ public class ModelReserva {
     private String destino;
     private LocalDate ida;
     private int qtdAdulto;
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    private String CPF;
     private int qtdCrianca;
     private List<Integer> listaAssentos;
     private ModelCadastro cadastro;

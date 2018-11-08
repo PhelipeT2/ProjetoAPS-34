@@ -94,11 +94,29 @@ public class Login implements Initializable {
                 while(rs.next()){
                     id = rs.getInt("id_User");
                 }
+                mReserva.setCPF(textCpf.getText());
                 if (mReserva != null && id != 0) {
                     if((mReserva.getQtdAdulto()+mReserva.getQtdCrianca()) > 1){
                         System.out.println("entrei depedentes");
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Dependentes.fxml"));
+                        Parent root = loader.load();
+                        Dependentes secondController = loader.getController();
+                        secondController.setmReserva(this.mReserva); // metodo para passar valor.
+                        Scene home_scene = new Scene(root);
+                        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        app_stage.setScene(home_scene);
+                        app_stage.show();
+
                     }else{
                         System.out.println("entrei Pagamento");
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Pagamento.fxml"));
+                        Parent root = loader.load();
+                        Pagamento secondController = loader.getController();
+                        secondController.setmReserva(this.mReserva); // metodo para passar valor.
+                        Scene home_scene = new Scene(root);
+                        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        app_stage.setScene(home_scene);
+                        app_stage.show();
                     }
                 }else{
                     throw new Exception("Reserva nula ou id = 0");

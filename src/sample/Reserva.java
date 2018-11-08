@@ -178,16 +178,13 @@ public class Reserva implements Initializable {
 
     public void handleButtonAction(ActionEvent event) throws Exception {
 
-        if (qtdDisponivel == 0) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            Parent root = loader.load();
-            Reserva secondController = loader.getController();
-            secondController.setmReserva(this.mReserva); // metodo para passar valor.
-            Scene home_scene = new Scene(root);
+
+            Parent parent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            Scene home_scene = new Scene(parent);
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.setScene(home_scene);
             app_stage.show();
-        }
+
 
 //        System.out.println("Proxima cena");
 //        Parent parent = FXMLLoader.load(getClass().getResource("login.fxml"));

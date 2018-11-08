@@ -1,6 +1,7 @@
 package sample;
 
-import javafx.beans.property.*;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 public class TabelaCliente {
 
