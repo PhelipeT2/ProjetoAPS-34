@@ -85,9 +85,9 @@ public class Pagamento implements Initializable {
             conexao.connect();
 
             statement = conexao.createStatement();
-            rs = statement.executeQuery("Select Tipo_Parcelamento from Parcelamento");
+            rs = statement.executeQuery("Select qt_Parcelamento from Parcelamento");
             while(rs.next()){
-                cbx_Parc.getItems().add(rs.getString("Tipo_Parcelamento"));
+                cbx_Parc.getItems().add(rs.getString("qt_Parcelamento"));
             }
             statement = conexao.createStatement();
             rs = statement.executeQuery("Select Tipo_Bandeira from Bandeira");
@@ -116,9 +116,11 @@ public class Pagamento implements Initializable {
 
     @FXML
     void next(MouseEvent event) throws Exception {
+
         if(NCard.getText() != null && Valid.getText() != null && Doc.getText() != null && Tit.getText() != null
                 && pass.getText() != null && cbx_Parc.getSelectionModel().getSelectedItem() != null
                 || cbx_Band.getSelectionModel().getSelectedItem() != null) {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Recibo.fxml"));
             Parent root = loader.load();
             Scene home_scene = new Scene(root);
